@@ -1,0 +1,4 @@
+I am reading line number 1 from test3 file.
+I am reading line number 2 from test3 file.
+I am reading line number 3 from test3 file.
+I am reading line number 4 from test3 file.
