@@ -6,33 +6,11 @@
 /*   By: sfrankie <sfrankie@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:35:25 by sfrankie          #+#    #+#             */
-/*   Updated: 2024/01/12 16:32:05 by sfrankie         ###   ########.fr       */
+/*   Updated: 2024/03/17 13:35:46 by sfrankie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-// void	ft_printstack_a(t_list *list)
-// {
-// 	ft_printf(GREEN "\nSTACK_A: ");
-// 	while (list)
-// 	{
-// 		ft_printf("%d ", *(int *)list->content);
-// 		list = list->next;
-// 	}
-// 	ft_printf("\n\n" RESET);
-// }
-
-// void	ft_printstack_b(t_list *list)
-// {
-// 	ft_printf(GREEN "\nSTACK_B: ");
-// 	while (list)
-// 	{
-// 		ft_printf("%d ", *(int *)list->content);
-// 		list = list->next;
-// 	}
-// 	ft_printf("\n\n" RESET);
-// }
 
 int	sorted_stack(t_list **stack_a)
 {

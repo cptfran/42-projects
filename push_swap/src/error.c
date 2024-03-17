@@ -6,12 +6,24 @@
 /*   By: sfrankie <sfrankie@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:10:26 by sfrankie          #+#    #+#             */
-/*   Updated: 2024/01/11 14:20:53 by sfrankie         ###   ########.fr       */
+/*   Updated: 2024/03/17 13:32:56 by sfrankie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+/*
+ * Function: ft_iferror
+ * ----------------------------
+ *   Checks if the command line arguments are valid. If there is less than 2 arguments,
+ *   or if the arguments are not valid integers, or if there are duplicate arguments,
+ *   it returns 1 to indicate an error.
+ *
+ *   argc: The number of command line arguments.
+ *   argv: The array of command line arguments.
+ *
+ *   Returns: 1 if there is an error, 0 otherwise.
+ */
 int	ft_iferror(int argc, char **argv)
 {
 	if (argc < 2)
@@ -25,6 +37,16 @@ int	ft_iferror(int argc, char **argv)
 	return (0);
 }
 
+/*
+ * Function: ft_ifdigitstr
+ * ----------------------------
+ *   Checks if a string is a valid integer. A valid integer can contain digits, spaces,
+ *   and a minus sign at the beginning.
+ *
+ *   argv: The string to be checked.
+ *
+ *   Returns: 1 if the string is a valid integer, 0 otherwise.
+ */
 int	ft_ifdigitstr(char *argv)
 {
 	if (!*argv)
@@ -40,6 +62,16 @@ int	ft_ifdigitstr(char *argv)
 	return (1);
 }
 
+/*
+ * Function: ft_ifdupstr
+ * ----------------------------
+ *   Checks if a string contains duplicate integers. The integers in the string are
+ *   separated by spaces.
+ *
+ *   argv: The string to be checked.
+ *
+ *   Returns: 1 if there are duplicate integers, 0 otherwise.
+ */
 int	ft_ifdupstr(char *argv)
 {
 	char	**arr;

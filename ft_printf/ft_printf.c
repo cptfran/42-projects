@@ -6,42 +6,22 @@
 /*   By: sfrankie <sfrankie@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 20:41:46 by sfrankie          #+#    #+#             */
-/*   Updated: 2024/01/17 12:26:54 by sfrankie         ###   ########.fr       */
+/*   Updated: 2024/03/17 13:16:05 by sfrankie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// int	check_args(const char *str, va_list *args)
-// {
-// 	int			i;
-// 	long long	y;
-
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if (str[i] == '%')
-// 		{
-// 			i++;
-// 			if (str[i] == 'c' || str[i] == 's' || str[i] == 'p' || str[i] == 'x'
-// 				|| str[i] == 'X')
-// 				va_arg(*args, int);
-// 			else if (str[i] == 'i' || str[i] == 'd' || str[i] == 'u')
-// 			{
-// 				y = va_arg(*args, long long);
-// 				if (y < INT_MIN || y > INT_MAX)
-// 					return (-1);
-// 			}
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
-// va_start(args, str);
-// if (check_args(str, &args) == -1)
-// 	return (ft_printstr("error: argument should be type of 'int'"), -1);
-// va_end(args);
-
+/*
+ * Function:  ft_choose_format
+ * --------------------
+ * Chooses the correct format for printing based on the provided sign.
+ *
+ *  args: A pointer to the list of arguments.
+ *  sign: The sign that determines the format for printing.
+ *
+ *  returns: The number of characters printed.
+ */
 int	ft_choose_format(va_list *args, const char sign)
 {
 	int			count;
@@ -64,6 +44,15 @@ int	ft_choose_format(va_list *args, const char sign)
 	return (count);
 }
 
+/*
+ * Function:  ft_printf
+ * --------------------
+ * A simplified version of the printf function. It formats and prints data to the standard output.
+ *
+ *  str: The format string that specifies how subsequent arguments are converted for output.
+ *
+ *  returns: The number of characters printed.
+ */
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
@@ -87,10 +76,10 @@ int	ft_printf(const char *str, ...)
 	return (va_end(args), count);
 }
 
-#include <stdio.h>
-int	main(void)
-{
-	printf("%%%c%%%s%%%d%%%i%%%x%%%u%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-	ft_printf("%%%c%%%s%%%d%%%i%%%x%%%u%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
-	return (0);
-}
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	printf("%%%c%%%s%%%d%%%i%%%x%%%u%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
+// 	ft_printf("%%%c%%%s%%%d%%%i%%%x%%%u%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%\n", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0);
+// 	return (0);
+// }

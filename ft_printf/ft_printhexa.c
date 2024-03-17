@@ -6,12 +6,21 @@
 /*   By: sfrankie <sfrankie@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:51:28 by sfrankie          #+#    #+#             */
-/*   Updated: 2023/08/28 17:07:54 by sfrankie         ###   ########.fr       */
+/*   Updated: 2024/03/17 13:17:15 by sfrankie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
+ * Function:  ft_hexalen
+ * --------------------
+ * Calculates the length of a hexadecimal number.
+ *
+ *  n: The number to calculate the length of.
+ *
+ *  returns: The length of the hexadecimal number.
+ */
 int	ft_hexalen(size_t n)
 {
 	int	len;
@@ -27,6 +36,14 @@ int	ft_hexalen(size_t n)
 	return (len);
 }
 
+/*
+ * Function:  ft_putsizedhexa
+ * --------------------
+ * Prints a hexadecimal number of a certain size.
+ *
+ *  n: The number to print.
+ *  format: The format to print the number in.
+ */
 void	ft_putsizedhexa(unsigned int n, const char format)
 {
 	if (n >= 16)
@@ -48,6 +65,16 @@ void	ft_putsizedhexa(unsigned int n, const char format)
 	}
 }
 
+/*
+ * Function:  ft_printhexa
+ * --------------------
+ * Prints a hexadecimal number to the standard output.
+ *
+ *  n: The number to print.
+ *  sign: The sign that determines the format for printing ('x' for lowercase, 'X' for uppercase).
+ *
+ *  returns: The number of characters printed.
+ */
 int	ft_printhexa(unsigned int n, const char sign)
 {
 	int	hexa_len;

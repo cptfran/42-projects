@@ -6,12 +6,25 @@
 /*   By: sfrankie <sfrankie@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:06:16 by sfrankie          #+#    #+#             */
-/*   Updated: 2024/01/12 17:25:42 by sfrankie         ###   ########.fr       */
+/*   Updated: 2024/03/17 13:34:59 by sfrankie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
+/*
+ * Function: ft_makestack
+ * ----------------------------
+ *   Converts an array of strings to a linked list of integers. If there is only one
+ *   string, it is split into substrings using spaces as delimiters. Each string is
+ *   converted to an integer and added to the end of the linked list.
+ *
+ *   stack: The linked list to be filled.
+ *   argc: The number of strings.
+ *   argv: The array of strings.
+ *
+ *   Returns: void
+ */
 void	ft_makestack(t_list **stack, int argc, char **argv)
 {
 	t_list	*node;
@@ -32,6 +45,17 @@ void	ft_makestack(t_list **stack, int argc, char **argv)
 	}
 }
 
+/*
+ * Function: main
+ * ----------------------------
+ *   The main function of the program. It checks the command line arguments, converts
+ *   them to a linked list of integers, and performs the push_swap algorithm.
+ *
+ *   argc: The number of command line arguments.
+ *   argv: The array of command line arguments.
+ *
+ *   Returns: 0 if the program runs successfully, 1 otherwise.
+ */
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;

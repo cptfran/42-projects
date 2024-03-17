@@ -6,12 +6,21 @@
 /*   By: sfrankie <sfrankie@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 20:55:27 by sfrankie          #+#    #+#             */
-/*   Updated: 2023/08/29 18:01:48 by sfrankie         ###   ########.fr       */
+/*   Updated: 2024/03/17 13:19:59 by sfrankie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
+ * Function:  ft_ptrlen
+ * --------------------
+ * Calculates the length of a pointer address when represented in hexadecimal.
+ *
+ *  n: The pointer address to calculate the length of.
+ *
+ *  returns: The length of the pointer address in hexadecimal.
+ */
 int	ft_ptrlen(uintptr_t n)
 {
 	int	len;
@@ -25,6 +34,13 @@ int	ft_ptrlen(uintptr_t n)
 	return (len);
 }
 
+/*
+ * Function:  ft_puthexa
+ * --------------------
+ * Prints a pointer address to the standard output in hexadecimal.
+ *
+ *  n: The pointer address to print.
+ */
 void	ft_puthexa(uintptr_t n)
 {
 	if (n >= 16)
@@ -41,6 +57,15 @@ void	ft_puthexa(uintptr_t n)
 	}
 }
 
+/*
+ * Function:  ft_printptr
+ * --------------------
+ * Prints a pointer address to the standard output.
+ *
+ *  ptr: The pointer address to print.
+ *
+ *  returns: The number of characters printed.
+ */
 int	ft_printptr(unsigned long ptr)
 {
 	int	ptr_len;

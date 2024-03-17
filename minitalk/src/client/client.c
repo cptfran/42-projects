@@ -6,7 +6,7 @@
 /*   By: sfrankie <sfrankie@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 12:17:14 by sfrankie          #+#    #+#             */
-/*   Updated: 2023/12/13 12:12:43 by sfrankie         ###   ########.fr       */
+/*   Updated: 2024/03/17 13:30:25 by sfrankie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 #define GREY  "\x1B[94m"
 #define RESET "\x1B[0m"
 
+/*
+ * Function: bit_send
+ * ----------------------------
+ *   Sends a bit to the server process identified by the PID using UNIX signals.
+ *
+ *   bit: The bit to be sent. If it's 1, SIGUSR1 is sent; if it's 0, SIGUSR2 is sent.
+ *   pid: The PID of the server process.
+ *
+ *   Returns: void
+ */
 void	bit_send(int bit, pid_t pid)
 {
 	if (bit == 1)
@@ -26,6 +36,16 @@ void	bit_send(int bit, pid_t pid)
 		kill(pid, SIGUSR2);
 }
 
+/*
+ * Function: char_split_send
+ * ----------------------------
+ *   Splits a character into bits and sends each bit to the server process identified by the PID.
+ *
+ *   c: The character to be split and sent.
+ *   pid: The PID of the server process.
+ *
+ *   Returns: void
+ */
 void	char_split_send(unsigned char c, pid_t pid)
 {
 	int	i;
@@ -38,6 +58,16 @@ void	char_split_send(unsigned char c, pid_t pid)
 	}
 }
 
+/*
+ * Function: str_split_send
+ * ----------------------------
+ *   Sends each character of the string to the server process identified by the PID.
+ *
+ *   str: The string to be sent.
+ *   pid: The PID of the server process.
+ *
+ *   Returns: void
+ */
 void	str_split_send(const char *str, pid_t pid)
 {
 	while (*str)
@@ -45,6 +75,17 @@ void	str_split_send(const char *str, pid_t pid)
 	char_split_send(0, pid);
 }
 
+/*
+ * Function: main
+ * ----------------------------
+ *   The main function of the client program. It checks the command line arguments,
+ *   converts the PID from a string to an integer, and sends the message to the server.
+ *
+ *   argc: The number of command line arguments.
+ *   argv: The array of command line arguments.
+ *
+ *   Returns: 0 if the message is sent successfully, 1 otherwise.
+ */
 int	main(int argc, char *argv[])
 {
 	pid_t	pid;

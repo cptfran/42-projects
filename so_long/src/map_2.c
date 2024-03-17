@@ -6,12 +6,23 @@
 /*   By: sfrankie <sfrankie@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:53:54 by sfrankie          #+#    #+#             */
-/*   Updated: 2024/02/01 16:22:05 by sfrankie         ###   ########.fr       */
+/*   Updated: 2024/03/17 14:01:13 by sfrankie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+/*
+ * Function: check_bot_wall
+ * ----------------------------
+ *   Checks if the bottom wall of the game map is made entirely of wall tiles ('1'). It iterates over the
+ *   tiles in the bottom row of the map, and if it finds a tile that is not a wall tile, it frees the game
+ *   map and returns 0.
+ *
+ *   map: The game map.
+ *
+ *   Returns: 1 if the bottom wall is correct, 0 otherwise.
+ */
 int	check_bot_wall(t_map *map)
 {
 	if (map->full_map[map->i] == '\n')
@@ -24,6 +35,17 @@ int	check_bot_wall(t_map *map)
 	return (1);
 }
 
+/*
+ * Function: check_rect
+ * ----------------------------
+ *   Checks if the game map is a rectangle. It calculates the length of the first row and then compares it
+ *   with the length of each subsequent row. If it finds a row that is not the same length as the first row,
+ *   it returns 0.
+ *
+ *   map: The game map.
+ *
+ *   Returns: 1 if the map is a rectangle, 0 otherwise.
+ */
 int	check_rect(t_map *map)
 {
 	map->i = 0;
@@ -52,6 +74,17 @@ int	check_rect(t_map *map)
 	return (1);
 }
 
+/*
+ * Function: check_player
+ * ----------------------------
+ *   Checks the number of players in the game map. It iterates over the tiles in the map, and if it finds a player tile ('P'),
+ *   it increases the player count. If the player count is not exactly 1, it prints an error message, frees the game map,
+ *   and returns 0.
+ *
+ *   map: The game map.
+ *
+ *   Returns: 1 if the number of players is correct, 0 otherwise.
+ */
 int	check_player(t_map *map)
 {
 	map->i = 0;
@@ -67,6 +100,16 @@ int	check_player(t_map *map)
 	return (1);
 }
 
+/*
+ * Function: check_exit
+ * ----------------------------
+ *   Checks the number of exits in the game map. If there is not exactly one exit, it prints an error message,
+ *   frees the game map, and returns 0.
+ *
+ *   map: The game map.
+ *
+ *   Returns: 1 if the number of exits is correct, 0 otherwise.
+ */
 int	check_exit(t_map *map)
 {
 	map->i = 0;
@@ -82,6 +125,16 @@ int	check_exit(t_map *map)
 	return (1);
 }
 
+/*
+ * Function: check_path
+ * ----------------------------
+ *   Checks if there is a path from the player to the exit in the game map. If there is no path, it prints an error message,
+ *   frees the game map and the temporary map, and returns 0.
+ *
+ *   map: The game map.
+ *
+ *   Returns: 1 if there is a path from the player to the exit, 0 otherwise.
+ */
 int	check_path(t_map *map)
 {
 	t_i	indexes;
