@@ -46,6 +46,12 @@ push_swap is a project that aims to sort data on a stack, with a limited set of 
 
 so_long is a project that aims to create a small 2D game. It uses the MiniLibX, a simplified version of the Xlib. You can find the project in the [so_long](so_long/) directory.
 
+### philosophers
+
+[Subject](https://github.com/rphlr/42-Subjects/blob/main/Cursus/philosophers/en.subject.pdf)
+
+Philosophers is a project that aims to solve the classic concurrency problem in computing, known as the Dining Philosophers problem. The problem involves five philosophers sitting at a round table who do nothing but think and eat. In the center of the table is a bowl of spaghetti. A fork is placed between each pair of philosophers, and as such, each philosopher has one fork to their left and one fork to their right. As spaghetti is difficult to serve and eat with a single fork, it is assumed that a philosopher must eat with two forks. The philosopher can only take the fork on their right or the one on their left as they become available and they must put them down after they finish eating. The challenge is to design a discipline of behavior (a concurrent algorithm) such that no philosopher will starve, i.e., each can forever continue to alternate between eating and thinking without deadlock.
+
 ## Usage
 
 Each project has its own directory. Navigate to the directory of the project you want to run, and follow the instructions in the README file of that project.
