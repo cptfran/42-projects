@@ -1,6 +1,6 @@
 .PHONY: all clean fclean re
 
-NAME = phonebook
+NAME = account
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC = *.cpp

@@ -9,7 +9,8 @@ int	main() {
 	std::string input;
 	std::cout << std::endl;
 	while (1) {
-		std::cout << BLUE << "PHONEBOOK: " << RESET;
+		std::cout << BLUE << "PHONEBOOK" << YELLOW << " (" << phoneBook.getNumOfContacts() << " contacts)"
+			<< BLUE << ": " << RESET;
 		std::cin >> input;
 		if (input == "EXIT") {
 			std::cout << YELLOW << "\nGOODBYE\n" << RESET << std::endl;

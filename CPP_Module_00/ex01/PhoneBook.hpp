@@ -11,21 +11,21 @@ class PhoneBook {
 					oldestContact = numOfContacts;
 				contacts[numOfContacts] = contact;
 				numOfContacts++;
+				std::cout << LIGHT_GREEN << "\nCONTACT ADDED\n" << RESET << std::endl;
 			} else {
 				contacts[oldestContact] = contact;
 				if (oldestContact < 7)
 					oldestContact++;
 				else
 					oldestContact = 0;
+				std::cout << LIGHT_GREEN << "\nCONTACT REPLACED\n" << RESET << std::endl;
 			}
-			std::cout << LIGHT_GREEN << "\nCONTACT ADDED\n" << RESET << std::endl;
 		}
 		int	printContactList() {
 			if (numOfContacts > 0) {
 				printFirstRow();
-				for (int i = 0; i < numOfContacts; i++) {
+				for (int i = 0; i < numOfContacts; i++)
 					contacts[i].printStartContactInfo(i);
-				}
 				std::cout << std::endl;
 				return 1;
 			} else {
