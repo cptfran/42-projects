@@ -1,28 +1,35 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include "colors.h"
 #include <cstdlib>
-#define RED "\033[31m"
-#define GREEN "\033[32m"
-#define LIGHT_GREEN "\033[92m"
-#define BLUE "\033[94m"
-#define YELLOW "\033[33m"
-#define GRAY "\033[90m"
-#define RESET "\033[0m"
+#include <limits>
 
 int	main() {
 	PhoneBook phoneBook;
 	std::string input;
-	std::cout << "\n\n\n" << std::endl;
+	std::cout << std::endl;
 	while (1) {
 		std::cout << BLUE << "PHONEBOOK: " << RESET;
 		std::cin >> input;
 		if (input == "EXIT") {
-			std::cout << YELLOW << "GOODBYE" << RESET << std::endl;
+			std::cout << YELLOW << "\nGOODBYE\n" << RESET << std::endl;
 			exit(0);
 		} else if (input == "ADD") {
-			Contact contact;
-			contact.setContact();
-			contact.printContact();
+			phoneBook.addContact();
+		} else if (input == "SEARCH") {
+			if (phoneBook.printContactList()) {
+				std::cout << GRAY << "Enter index to display a contact: " << RESET;
+				int	index_input;
+				std::cin >> index_input;
+				while (std::cin.fail() || index_input < 0 || index_input >= phoneBook.getNumOfContacts()) {
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					std::cout << RED << "\nCONTACT DOESN'T EXIST\n" << RESET << std::endl;
+					std::cout << GRAY << "Enter index to display a contact: " << RESET;
+					std::cin >> index_input;
+				}
+				phoneBook.printSingleContact(index_input);
+			}
 		} else if (!input.empty()) {
 			std::cout << RED << "\nUNKNOWN COMMAND: "<< input << RESET << std::endl;
 			std::cout << GRAY << "(AVAILABLE COMMANDS: 'ADD', 'SEARCH', 'EXIT')\n" << RESET << std::endl;
