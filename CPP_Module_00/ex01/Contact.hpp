@@ -1,31 +1,36 @@
-#include <string>
+#include <iostream>
 
 class Contact {
 	public:
-		void	setContact(const std::string& f_name, const std::string& l_name, const std::string& n_name,
-			const std::string& p_number, const std::string& d_secret) {
-				setFirstName(f_name);
-				setLastName(l_name);
-				setNickname(n_name);
-				setPhoneNumber(p_number);
-				setDarkestSecret(d_secret);
+		void	setContact() {
+				std::string	input;
+				std::cout << "Enter first name: ";
+				std::cin >> input;
+				setFirstName(input);
+				std::cout << "Enter last name: ";
+				std::cin >> input;
+				setLastName(input);
+				std::cout << "Enter nickname: ";
+				std::cin >> input;
+				setNickname(input);
+				std::cout << "Enter phone number: ";
+				std::cin >> input;
+				setPhoneNumber(input);
+				std::cout << "Enter your darkest secret: ";
+				std::cin >> input;
+				setDarkestSecret(input);
+		}
+		void	printContact() {
+			std::cout << firstName << "\n" << lastName << "\n" << nickname << "\n" << phoneNumber << "\n"
+				<< darkestSecret << std::endl;
 		}
 	private:
-		std::string first_name;
-		std::string	last_name;
-		std::string nickname;
-		std::string phone_number;
-		std::string darkest_secret;
-		void	setFirstName(const std::string& name) { first_name = name; }
-		void	setLastName(const std::string& name) { last_name = name; }
+		std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
+		void	setFirstName(const std::string& name) { firstName = name; }
+		void	setLastName(const std::string& name) { lastName = name; }
 		void	setNickname(const std::string& name) { nickname = name; }
-		void	setPhoneNumber(const std::string& number) {
-			if (isDigitStr(number))
-				phone_number = number;
-			else
-				phone_number = "EMPTY";
-		}
-		void	setDarkestSecret(const std::string& secret) { darkest_secret = secret; }
+		void	setPhoneNumber(const std::string& number) { isDigitStr(number) ? phoneNumber = number : phoneNumber = "EMPTY"; }
+		void	setDarkestSecret(const std::string& secret) { darkestSecret = secret; }
 		bool	isDigitStr(const std::string& str) {
 			for (std::string::const_iterator i = str.begin(); i != str.end(); i++) {
 				if (!isdigit(*i))

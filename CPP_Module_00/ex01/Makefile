@@ -1,9 +1,9 @@
 .PHONY: all clean fclean re
 
-NAME = megaphone
+NAME = pb
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = megaphone.cpp
+SRC = *.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)
