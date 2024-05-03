@@ -1,9 +1,9 @@
 .PHONY: all clean fclean re
 
-NAME = account
+NAME = hiThisIsBrain
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = tests.cpp Account.cpp
+SRC = main.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)
