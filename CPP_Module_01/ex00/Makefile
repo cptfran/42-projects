@@ -1,6 +1,6 @@
 .PHONY: all clean fclean re
 
-NAME = Zombie
+NAME = zombie
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC = newZombie.cpp Zombie.cpp main.cpp randomChump.cpp

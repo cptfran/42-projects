@@ -1,11 +1,4 @@
 #include "Zombie.hpp"
-#include <cstdlib>
-#define RED "\033[31m"
-#define LIGHT_GREEN "\033[92m"
-#define BLUE "\033[94m"
-#define YELLOW "\033[33m"
-#define GRAY "\033[90m"
-#define RESET "\033[0m"
 
 int	main(int argc, char **argv) {
 	std::string input;
@@ -27,7 +20,6 @@ int	main(int argc, char **argv) {
 			<< LIGHT_GREEN << std::endl;
 		for (int i = 0; i < argc - 1; i++)
 			zombies[i] = newZombie(argv[i]);
-		std::cout << RED;
 		for (int i = 0; i < argc - 1; i++)
 			delete zombies[i];
 		delete[] zombies;
