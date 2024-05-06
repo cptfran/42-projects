@@ -3,7 +3,7 @@
 int	main(int argc, char **argv) {
 	std::string input;
 	if (argc < 2) {
-		std::cout << RED << "\nError: enter at least one argument to create object" << RESET << std::endl;
+		std::cerr << RED << "\nError: enter at least one argument to create object" << RESET << std::endl;
 		exit(1);
 	}
 	++argv;

@@ -5,21 +5,22 @@
 class Contact {
 	public:
 		void	setContact() {
+				std::cout << std::endl;
 				std::string	input;
-				std::cout << '\n' << GRAY << "Enter first name: "<< RESET;
-				std::cin >> input;
+				while (!isCorrectField(input, "Enter first name"))
+					continue ;
 				setFirstName(input);
-				std::cout << GRAY << "Enter last name: "<< RESET;
-				std::cin >> input;
+				while (!isCorrectField(input, "Enter last name"))
+					continue ;
 				setLastName(input);
-				std::cout << GRAY << "Enter nickname: "<< RESET;
-				std::cin >> input;
+				while (!isCorrectField(input, "Enter nickname"))
+					continue ;
 				setNickname(input);
-				std::cout << GRAY << "Enter phone number: "<< RESET;
-				std::cin >> input;
+				while (!isCorrectField(input, "Enter phone number"))
+					continue ;
 				setPhoneNumber(input);
-				std::cout << GRAY << "Enter your darkest secret: " << RESET;
-				std::cin >> input;
+				while (!isCorrectField(input, "Enter your darkest secret"))
+					continue ;
 				setDarkestSecret(input);
 		}
 		void	printStartContactInfo(const int i) {
@@ -43,7 +44,7 @@ class Contact {
 			while (!isDigitStr(number)) {
 				std::cout << RED << "\nUSE ONLY DIGITS\n" << RESET << std::endl;
 				std::cout << GRAY << "Enter phone number: "<< RESET;
-				std::cin >> number;
+				std::getline(std::cin, number);
 			}
 			phoneNumber = number;
 		}
@@ -60,5 +61,17 @@ class Contact {
 				return str.substr(0, 9) + ".";
 			else
 				return str;
+		}
+		bool	isCorrectField(std::string& input, std::string input_msg) {
+			std::cout << GRAY << input_msg << ": "<< RESET;
+			std::getline(std::cin, input);
+			if (input.find(' ') != std::string::npos) {
+				std::cout << RED << "\nSPACES NOT ALLOWED\n" << RESET << std::endl;
+				return false;
+			} else if (input.empty()) {
+				std::cout << RED << "\nFIELD CANNOT BE EMPTY\n" << RESET << std::endl;
+				return false;
+			}
+			return true;
 		}
 };
