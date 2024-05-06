@@ -1,6 +1,6 @@
 .PHONY: all clean fclean re
 
-NAME = phonebook
+NAME = sedIsForLosers
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC = main.cpp
