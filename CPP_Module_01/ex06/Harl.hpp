@@ -19,7 +19,7 @@
 
 class Harl {
 	public:
-		void complain(std::string level);
+		void complainFilter(std::string level);
 	private:
 		typedef void (Harl::*funcHarl)();
 		void debug();
