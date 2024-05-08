@@ -11,11 +11,9 @@
 #define INFO LIGHT_GREEN "[ INFO ]\nI cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!" RESET
 #define WARNING LIGHT_GREEN "[ WARNING ]\nI think I deserve to have some extra bacon for free. I’ve been coming for years whereas you started working here since last month." RESET
 #define ERROR LIGHT_GREEN "[ ERROR ]\nThis is unacceptable! I want to speak to the manager now." RESET
+#define DEFAULT GRAY "[ Probably complaining about insignificant problems ]" RESET
 
-#define ERR_PARSER_VERIFICATION RED "Error: wrong input, choose one of these: 'DEBUG', 'INFO', 'WARNING, 'ERROR'" RESET
-#define ERR_PARSER_INPUT RED "Error: input issue, try to run the program again" RESET
-
-#define MSG_CHOOSE GRAY "Choose level ('DEBUG', 'INFO', 'WARNING', 'ERROR')" RESET
+#define ERR_PARSER_INPUT RED "Error: run program with argument: <./harlFilter> <arg>" RESET
 
 class Harl {
 	public:
