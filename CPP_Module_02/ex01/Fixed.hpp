@@ -11,7 +11,7 @@ class Fixed {
 		~Fixed();
 		float toFloat() const;
 		int toInt() const;
-		friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
+		friend std::ostream &operator<<(std::ostream &os, const Fixed &obj);
 	private:
 		int fixedPointNum;
 		static const int numOfFractionalBits = 8;

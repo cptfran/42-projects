@@ -20,7 +20,7 @@ Fixed::~Fixed() { std::cout << "Destructor called" << std::endl; }
 Fixed::Fixed(const int val) : fixedPointNum(val << numOfFractionalBits) { std::cout << "Int constructor called" << std::endl; }
 
 Fixed::Fixed(const float val) {
-	fixedPointNum = roundf(val * (1 << numOfFractionalBits));
+	fixedPointNum = roundf(val * (1 << numOfFractionalBits)); // round to val * (move 8bits left -> equals 2^8 -> equals 256 -> get rid of commas)
 	std::cout << "Float constructor called" << std::endl;
 }
 
