@@ -1,14 +1,17 @@
 #include "Harl.hpp"
 
-void Harl::complain(std::string level) {
+void Harl::complainFilter(std::string level) {
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	funcHarl harlComplaints[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	for (int i = 0; i < 4; i++) {
-		if (level == levels[i]) {
-			(this->*harlComplaints[i])();
-			return;
+		switch (level.compare(levels[i])) {
+			case 0:
+				for (int j = i; j < 4; j++)
+					(this->*harlComplaints[j])();
+				break;
 		}
 	}
+
 }
 
 void Harl::debug() { std::cout << DEBUG << std::endl; }

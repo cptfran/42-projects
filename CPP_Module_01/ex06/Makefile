@@ -1,6 +1,6 @@
 .PHONY: all clean fclean re
 
-NAME = harl
+NAME = harlFilter
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC = main.cpp Harl.cpp
