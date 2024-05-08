@@ -2,7 +2,7 @@
 
 int	main(int argc, char **argv) {
 	if (argc != 3) {
-		std::cerr << YELLOW << "\nUsage: " << argv[0] << LIGHT_GREEN << " [number_of_zombies]" << BLUE << "[zombie_name];" << RESET << std::endl;
+		std::cerr << YELLOW << "\nUsage: " << argv[0] << LIGHT_GREEN << " [number_of_zombies] " << BLUE << "[zombie_name];" << RESET << std::endl;
 		return 1;
 	}
 	std::cout << std::endl;

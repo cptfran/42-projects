@@ -2,17 +2,18 @@
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
+#include <cstdlib>
 
 int	replace(const char *fileName, const std::string s1, const std::string s2) {
 	int	replacementCount = 0;
 	if (access(fileName, F_OK) == -1 || access(fileName, R_OK) == -1) {
 		perror("Error");
-		return 0;
+		exit(EXIT_FAILURE);
 	}
 	std::ifstream file(fileName);
 	if (!file) {
 		std::cerr << RED << "Error: cannot open the file: '"<< fileName << "'" << RESET << std::endl;
-		return 1;
+		exit(EXIT_FAILURE);
 	}
 	std::string fileText;
 	std::string line;
@@ -29,7 +30,7 @@ int	replace(const char *fileName, const std::string s1, const std::string s2) {
 				std::ofstream outFile((std::string(fileName) + ".replace").c_str());
 				if (!outFile) {
 					std::cerr << RED << "Error: cannot create file: '" << fileName << "'" << RESET << std::endl;
-					return 0;
+					exit(EXIT_FAILURE);
 				}
 				outFile << fileText;
 				return replacementCount;

@@ -1,28 +1,12 @@
 #include "Harl.hpp"
 
-std::string parser(std::string input) {
-	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	while (1) {
-		std::cout << MSG_CHOOSE << std::endl;
-		std::getline(std::cin, input);
-		for (int i = 0; i < 4; i++) {
-			if (input == levels[i])
-				return input;
-		}
-		std::cerr << ERR_PARSER_VERIFICATION << std::endl;
-	}
-	return NULL;
-}
-
-int main() {
-	Harl harl;
-	std::string input;
-	input = parser(input);
-	if (!input.empty())
-		harl.complain(input);
-	else {
+int main(int argc, char **argv) {
+	if (argc != 2) {
 		std::cerr << ERR_PARSER_INPUT << std::endl;
 		return 1;
 	}
+	Harl harl;
+	std::string level = argv[1];
+	harl.complainFilter(level);
 	return 0;
 }
