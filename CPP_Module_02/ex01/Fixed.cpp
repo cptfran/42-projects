@@ -20,7 +20,7 @@ Fixed::~Fixed() { std::cout << "Destructor called" << std::endl; }
 Fixed::Fixed(const int val) : fixedPointNum(val << numOfFractionalBits) { std::cout << "Int constructor called" << std::endl; }
 
 Fixed::Fixed(const float val) {
-	fixedPointNum = roundf(val * (1 << numOfFractionalBits)); // round to val * (move 8bits left -> equals 2^8 -> equals 256 -> get rid of commas)
+	fixedPointNum = roundf(val * (1 << numOfFractionalBits)); // round to val * (move 8bits left -> equals 2^8 -> equals 256 -> move the comma)
 	std::cout << "Float constructor called" << std::endl;
 }
 
@@ -29,6 +29,7 @@ float Fixed::toFloat() const { return (float)fixedPointNum / (1 << numOfFraction
 
 int Fixed::toInt() const { return fixedPointNum >> numOfFractionalBits; }
 
+// set output stream for this object, by default output stream cannot handle objects, setting the stream to output obj value converted to float
 std::ostream &operator<<(std::ostream &os, const Fixed &obj) {
 	os << obj.toFloat();
 	return os;
