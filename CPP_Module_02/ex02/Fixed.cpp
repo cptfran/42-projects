@@ -68,3 +68,8 @@ Fixed Fixed::operator/(const Fixed &obj) const {
 	newObj.fixedPointNum = (fixedPointNum << numOfFractionalBits) / obj.fixedPointNum;
 	return newObj;
 }
+
+Fixed &Fixed::operator++() { ++fixedPointNum; return *this; }
+Fixed Fixed::operator++(int) { Fixed tmp(*this); ++fixedPointNum; return tmp; }
+Fixed &Fixed::operator--() { --fixedPointNum; return *this; }
+Fixed Fixed::operator--(int) { Fixed tmp(*this); --fixedPointNum; return tmp; }

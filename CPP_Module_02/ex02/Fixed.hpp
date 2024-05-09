@@ -35,7 +35,10 @@ class Fixed {
 		Fixed operator-(const Fixed &obj) const;
 		Fixed operator*(const Fixed &obj) const;
 		Fixed operator/(const Fixed &obj) const;
-		
+		Fixed &operator++();
+		Fixed operator++(int);
+		Fixed &operator--();
+		Fixed operator--(int);
 	private:
 		int fixedPointNum;
 		static const int numOfFractionalBits = 8;
