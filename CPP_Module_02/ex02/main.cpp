@@ -56,7 +56,7 @@ std::string parser(std::string input) {
 
 void run_test(std::string input) {
 	if (input == "exit") {
-		std::cout << LIGHT_GREEN << "exit" << std::endl;
+		std::cout << MSG_EXIT << std::endl;
 		return ;
 	} else if (input == "comparison") {
 		test_comparison();
