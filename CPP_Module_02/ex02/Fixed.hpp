@@ -9,6 +9,8 @@
 #define RESET "\033[0m"
 
 #define MSG_ASK LIGHT_GREEN "Which test? ('comparison', 'arithmetic', 'subject')\nUse 'exit' to exit the program" RESET
+#define MSG_EXIT LIGHT_GREEN "exit" RESET
+
 #define ERR_WRONG_INPUT RED "Error: test not found" RESET
 #define ERR_DIV_BY_ZERO RED "\nError: divison by 0" RESET
 
