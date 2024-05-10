@@ -17,6 +17,13 @@ Fixed &Fixed::operator=(const Fixed &obj) {
 
 Fixed::~Fixed() { std::cout << "Destructor called" << std::endl; }
 
+int Fixed::getRawBits() const {
+	std::cout << "getRawBits member function called" << std::endl;
+	return fixedPointNum;
+}
+
+void Fixed::setRawBits(int const raw) { fixedPointNum = raw; }
+
 Fixed::Fixed(const int val) : fixedPointNum(val << numOfFractionalBits) { std::cout << "Int constructor called" << std::endl; }
 
 Fixed::Fixed(const float val) {
