@@ -9,6 +9,8 @@ class Fixed {
 		Fixed(const int val);
 		Fixed(const float val);
 		~Fixed();
+		int getRawBits() const;
+		void setRawBits(int const raw);
 		float toFloat() const;
 		int toInt() const;
 		friend std::ostream &operator<<(std::ostream &os, const Fixed &obj);
