@@ -18,6 +18,14 @@
 // 	return 0;
 // }
 
+void test_increment_decrement() {
+	Fixed a(0.5f);
+	std::cout << "++a ? " << ++a << std::endl;
+	std::cout << "a++ ?" << a++ << std::endl;
+	std::cout << "--a ?" << --a << std::endl;
+	std::cout << "a-- ?" << a-- << std::endl;
+}
+
 void test_arithmetic() {
 	Fixed a(2.5f);
 	Fixed b(3);
@@ -46,7 +54,8 @@ std::string parser(std::string input) {
 		std::cout << GRAY;
 		std::getline(std::cin, input);
 		std::cout << RESET;
-		if (input != "exit" && input != "comparison" && input != "subject" && input != "arithmetic") {
+		if (input != "exit" && input != "comparison" && input != "subject" && input != "arithmetic"
+			&& input != "increment_decrement") {
 			std::cerr << ERR_WRONG_INPUT << std::endl;
 			continue;
 		}
@@ -63,6 +72,9 @@ void run_test(std::string input) {
 		run_test(parser(input));
 	} else if (input == "arithmetic") {
 		test_arithmetic();
+		run_test(parser(input));
+	} else if (input == "increment_decrement") {
+		test_increment_decrement();
 		run_test(parser(input));
 	}
 	// else if (input == "subject") {
