@@ -1,12 +1,5 @@
 #include "Point.hpp"
 
-// Fixed &myAbsolute(Fixed &val) {
-// 	if (val < 0) {
-// 		val = val * -1;
-// 	}
-// 	return val;
-// }
-
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	// vector product (cross product):
 	// The vector product, also known as the cross product, is a mathematical operation that takes two vectors and 
@@ -74,9 +67,13 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	if (areaBCP < 0)
 		areaBCP = areaBCP * -1;
 	
+	// If any of the products of small triangles equals 0, then the point is on the edge
+	if (productABP == 0 || productACP == 0 || productBCP == 0)
+		return false;
+
 	// If area of a whole triangle is equal to a sum of areas of smaller triangles,
 	// the point is inside the triangle
 	if (areaABC == areaABP + areaACP + areaBCP)
 		return true;
-	return false
+	return false;
 }
