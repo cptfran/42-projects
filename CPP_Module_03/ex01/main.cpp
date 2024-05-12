@@ -1,11 +1,13 @@
-#include "ClapTrap.hpp"
+#include "msg.hpp"
+#include "ScavTrap.hpp"
 
 int main() {
-    ClapTrap cp1("Mike");
-    ClapTrap cp2("Tony");
-    cp1.attack("Tony");
-    if (cp2.getName() == "Tony") {
-        cp2.takeDamage(cp1.getAttackDamage());
+    std::cout << MSG_START << std::endl;
+    ScavTrap fighter1("Mark");
+    ScavTrap figther2("Elon");
+    std::string input;
+    while (true) {
+        std::cout << MSG_CHOOSE << std::endl;
+        std::getline(std::cin, input);
     }
-    return 0;
 }

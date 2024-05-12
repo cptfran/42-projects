@@ -1,13 +1,17 @@
 #include "ClapTrap.hpp"
+#include "colors.hpp"
 
 ClapTrap::ClapTrap(const std::string& name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0) {
-	std::cout << LIGHT_GREEN << this->name << " has joined the battlefield" << RESET << std::endl;
+	std::cout << LIGHT_GREEN << "ClapTrap " << this->name << " has joined the battlefield" << RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& obj) : name(obj.name), hitPoints(obj.hitPoints), energyPoints(obj.energyPoints),
-	attackDamage(obj.attackDamage) {}
+	attackDamage(obj.attackDamage) {
+	std::cout << LIGHT_GREEN << "ClapTrap " << this->name << " has been cloned" << RESET << std::endl;
+}
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& obj) {
+	std::cout << LIGHT_GREEN << "ClapTrap " << this->name << " Copy assignment operator called" << RESET << std::endl;
 	if (this != &obj) {
 		this->name = obj.name;
 		this->hitPoints = obj.hitPoints;
@@ -18,7 +22,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& obj) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << RED << this->name << " has left the battlefield" << RESET << std::endl;
+	std::cout << RED << "ClapTrap " << this->name << " has left the battlefield" << RESET << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -54,16 +58,41 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		if (this->hitPoints > 10) {
 			this->hitPoints = 10;
 		}
-		this->energyPoints--;
+		--this->energyPoints;
 	} else {
 		std::cout << YELLOW << "ClapTrap " << this->name << " is full HP" << RESET << std::endl;
 	}
+}
+
+std::string& ClapTrap::getName() {
+	return this->name;
+}
+
+unsigned int& ClapTrap::getHitPoints() {
+	return this->hitPoints;
+}
+
+unsigned int& ClapTrap::getEnergyPoints() {
+	return this->hitPoints;
 }
 
 unsigned int& ClapTrap::getAttackDamage() {
 	return this->attackDamage;
 }
 
-std::string& ClapTrap::getName() {
-	return this->name;
+void ClapTrap::setName(const std::string& name) {
+	this->name = name;
 }
+
+void ClapTrap::setHitPoints(const unsigned int& hitPoints) {
+	this->hitPoints = hitPoints;
+}
+
+void ClapTrap::setEnergyPoints(const unsigned int& energyPoints) {
+	this->energyPoints = energyPoints;
+}
+
+void ClapTrap::setAttackDamage(const unsigned int& attackDamage) {
+	this->attackDamage = attackDamage;
+}
+
