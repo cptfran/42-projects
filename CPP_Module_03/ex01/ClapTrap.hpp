@@ -2,13 +2,6 @@
 # define CLAPTRAP_HPP
 # include <iostream>
 
-# define RED "\033[31m"
-# define LIGHT_GREEN "\033[92m"
-# define BLUE "\033[94m"
-# define YELLOW "\033[33m"
-# define GRAY "\033[90m"
-# define RESET "\033[0m"
-
 class ClapTrap {
 	public:
 		ClapTrap(const std::string& name);
@@ -18,9 +11,15 @@ class ClapTrap {
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-		unsigned int& getAttackDamage();
 		std::string& getName();
-	private:
+		unsigned int& getHitPoints();
+		unsigned int& getEnergyPoints();
+		unsigned int& getAttackDamage();
+		void setName(const std::string& name);
+		void setHitPoints(const unsigned int& hitPoints);
+		void setEnergyPoints(const unsigned int& energyPoints);
+		void setAttackDamage(const unsigned int& attackDamage);
+	protected:
 		std::string name;
 		unsigned int hitPoints;
 		unsigned int energyPoints;
