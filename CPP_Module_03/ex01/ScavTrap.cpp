@@ -1,5 +1,5 @@
 #include "ScavTrap.hpp"
-#include "colors.hpp"
+#include "Colors.hpp"
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
     std::cout << LIGHT_GREEN << "ScavTrap " << this->name << " has joined the battlefield" << RESET << std::endl;
@@ -26,8 +26,8 @@ ScavTrap::~ScavTrap() {
 
 void ScavTrap::attack(const std::string& target) {
     if (this->energyPoints > 0) {
-        std::cout << YELLOW << "ScavTrap " << this->name << " attacks " << target << " , causing "
-            << this->attackDamage << " points of damage!" << RESET << std::endl;
+        std::cout << YELLOW << "ScavTrap " << this->name << " attacks " << target << ", causing "
+            << this->attackDamage << " points of damage! ⚔️" << RESET << std::endl;
         --this->energyPoints;
     } else {
         std::cout << YELLOW << "ScavTrap " << this->name << " is out of energy" << RESET << std::endl;
@@ -35,5 +35,5 @@ void ScavTrap::attack(const std::string& target) {
 }
 
 void ScavTrap::guardGate() {
-    std::cout << YELLOW << "ScavTrap " << this->name << "is in the Gate keeper mode" << RESET << std::endl;
+    std::cout << YELLOW << "ScavTrap " << this->name << " is in the Gate keeper mode 🛡️" << RESET << std::endl;
 }

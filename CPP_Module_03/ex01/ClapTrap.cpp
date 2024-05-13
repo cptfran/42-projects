@@ -1,5 +1,5 @@
 #include "ClapTrap.hpp"
-#include "colors.hpp"
+#include "Colors.hpp"
 
 ClapTrap::ClapTrap(const std::string& name) : name(name), hitPoints(10), energyPoints(10), attackDamage(0) {
 	std::cout << LIGHT_GREEN << "ClapTrap " << this->name << " has joined the battlefield" << RESET << std::endl;
@@ -28,7 +28,7 @@ ClapTrap::~ClapTrap() {
 void ClapTrap::attack(const std::string& target) {
 	if (this->energyPoints > 0) {
 		std::cout << YELLOW << "ClapTrap " << this->name << " attacks " << target << " , causing "
-			<< this->attackDamage << " points of damage!" << RESET << std::endl;
+			<< this->attackDamage << " points of damage! ⚔️" << RESET << std::endl;
 			this->energyPoints--;
 	} else {
 		std::cout << YELLOW << "ClapTrap " << this->name << " is out of energy" << RESET << std::endl;
@@ -53,7 +53,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 void ClapTrap::beRepaired(unsigned int amount) {
 	if (this->energyPoints > 0) {
-		std::cout << LIGHT_GREEN << "ClapTrap " << this->name << " repairs " << amount << " hit points" << RESET << std::endl;
+		std::cout << LIGHT_GREEN << "ClapTrap " << this->name << " repairs " << amount << " hit points ❤️" << RESET << std::endl;
 		this->hitPoints += amount;
 		--this->energyPoints;
 	} else {
@@ -70,7 +70,7 @@ unsigned int& ClapTrap::getHitPoints() {
 }
 
 unsigned int& ClapTrap::getEnergyPoints() {
-	return this->hitPoints;
+	return this->energyPoints;
 }
 
 unsigned int& ClapTrap::getAttackDamage() {
