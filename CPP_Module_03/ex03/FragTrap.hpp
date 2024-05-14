@@ -1,4 +1,4 @@
-#ifndef FRAGRAP_HPP
+#ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
 
 # include "ClapTrap.hpp"
@@ -11,6 +11,10 @@ public:
     FragTrap& operator=(const FragTrap& obj);
     ~FragTrap();
     void highFivesGuys(void);
+protected:
+    static const unsigned int defHitPoints = 100;
+    static const unsigned int defEnergyPoints = 100;
+    static const unsigned int defAttackDamage = 30;
 };
 
 #endif
