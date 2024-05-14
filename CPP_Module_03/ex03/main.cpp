@@ -1,6 +1,5 @@
 #include "Msg.hpp"
 #include "DiamondTrap.hpp"
-#include <iomanip>
 #include <cstdlib>
 #include <ctime>
 
@@ -37,6 +36,12 @@ int action(DiamondTrap& actionTaker, DiamondTrap& actionReceiver, std::string& i
         return 1;
     } else if (input == "highfive") {
         actionTaker.highFivesGuys();
+        return 1;
+    } else if (input == "guard") {
+        actionTaker.guardGate();
+        return 1;
+    } else if (input == "whoami") {
+        actionTaker.whoAmI();
         return 1;
     } else {
         std::cerr << ERR_INPUT << std::endl;
