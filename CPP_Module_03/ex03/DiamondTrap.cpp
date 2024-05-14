@@ -32,4 +32,3 @@ DiamondTrap::~DiamondTrap() {
 void DiamondTrap::attack(const std::string& target) {
     ScavTrap::attack(target);
 }
-
