@@ -3,14 +3,14 @@
 
 DiamondTrap::DiamondTrap() {
     std::cout << LIGHT_GREEN << "Default DiamondTrap has joined the battlefield" << RESET << std::endl;
-
 }
 
 DiamondTrap::DiamondTrap(const std::string& name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
     std::cout << LIGHT_GREEN << "DiamondTrap " << this->name << " has joined the battlefield" << RESET << std::endl;
-    this->hitPoints = FragTrap::hitPoints;
-    this->energyPoints = ScavTrap::energyPoints;
-    this->attackDamage = FragTrap::attackDamage;
+    this->name = name;
+    this->hitPoints = FragTrap::defHitPoints;
+    this->energyPoints = ScavTrap::defEnergyPoints;
+    this->attackDamage = FragTrap::defAttackDamage;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& obj) : ClapTrap(obj), ScavTrap(obj), FragTrap(obj) {
@@ -31,4 +31,8 @@ DiamondTrap::~DiamondTrap() {
 
 void DiamondTrap::attack(const std::string& target) {
     ScavTrap::attack(target);
+}
+
+void DiamondTrap::whoAmI() {
+    std::cout << YELLOW <<  "DiamondTrap name: " << this->name << "\nClapTrap name: " << ClapTrap::name << RESET << std::endl;
 }

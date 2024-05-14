@@ -11,6 +11,10 @@ public:
     FragTrap& operator=(const FragTrap& obj);
     ~FragTrap();
     void highFivesGuys(void);
+protected:
+    static const unsigned int defHitPoints = 100;
+    static const unsigned int defEnergyPoints = 100;
+    static const unsigned int defAttackDamage = 30;
 };
 
 #endif
