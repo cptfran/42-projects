@@ -1,6 +1,7 @@
 #ifndef DOG_HPP
 #define DOG_HPP
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal {
 public:
@@ -9,6 +10,10 @@ public:
     Dog& operator=(const Dog& obj);
     ~Dog();
     void makeSound() const;
+    void setBrainIdeas(const std::string* newIdeas, int size);
+    std::string* getBrainIdeas();
+private:
+    Brain* brain;
 };
 
 #endif
