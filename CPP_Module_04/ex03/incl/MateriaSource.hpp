@@ -14,3 +14,5 @@ public:
 private:
     AMateria* slot[4];
 };
+
+#endif

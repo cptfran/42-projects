@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Msg.hpp"
-#include "Cure.hpp"
+#include "../incl/Msg.hpp"
+#include "../incl/Cure.hpp"
 
-Cure::Cure() : AMateria() {
+Cure::Cure() : AMateria("cure") {
     std::cout << MSG_CURE_DEFAULT_CONSTRUCTOR << std::endl;
 }
 
@@ -15,9 +15,10 @@ Cure::~Cure() {
 }
 
 AMateria* Cure::clone() const {
+    std::cout << MSG_CURE_CLONE << std::endl;
     return new Cure(this->type);
 }
 
 void Cure::use(ICharacter& target) {
-    std::cout << YELLOW << "* heals " << target.getName() << "'s wounds *" << RESET << std::endl;
+    std::cout << LIGHT_MAGENTA << "* heals " << target.getName() << "'s wounds *" << RESET << std::endl;
 }

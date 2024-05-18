@@ -1,6 +1,6 @@
 #include <iostream>
-#include "AMateria.hpp"
-#include "Msg.hpp"
+#include "../incl/AMateria.hpp"
+#include "../incl/Msg.hpp"
 
 AMateria::AMateria() {
     std::cout << MSG_AMATERIA_DEFAULT_CONSTRUCTOR << std::endl;
@@ -18,6 +18,6 @@ const std::string& AMateria::getType() const {
     return this->type;
 }
 
-void AMateria::use(Icharacter& target) {
-    std::cout << MSG_AMATERIA_USE_DEFAULT << std::endl;
+void AMateria::use(ICharacter& target) {
+    std::cout << MSG_AMATERIA_USE_DEFAULT << target.getName() << std::endl;
 }
