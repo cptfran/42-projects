@@ -27,7 +27,7 @@
 #define MSG_CHARACTER_COPY_ASSIGNMENT LIGHT_GREEN "Character copy assignment operator called" RESET
 #define MSG_CHARACTER_DESTRUCTOR RED "Character destructor called" RESET
 #define MSG_CHARACTER_EQUIP LIGHT_GREEN "Character equip() func called" RESET
-#define ERR_CHARACTER_EQUIP RED << "Character cannot equip(): full inventory" RESET
+#define ERR_CHARACTER_EQUIP RED << "Character cannot equip(): full inventory or materia not created" RESET
 #define MSG_CHARACTER_UNEQUIP LIGHT_GREEN "Character unequip() func called" RESET
 #define ERR_CHARACTER_UNEQUIP RED "Character cannot unequip(): wrong index" RESET
 
@@ -39,12 +39,12 @@
 #define MSG_MATERIASOURCE_LEARN_MATERIA LIGHT_GREEN "MateriaSource learnMateria() func called" RESET
 #define ERR_MATERIASOURCE_LEARN_MATERIA RED "MateriaSource cannot learnMateria(): full slots" RESET
 #define MSG_MATERIASOURCE_CREATE_MATERIA LIGHT_GREEN "MateriaSource createMateria() func called" RESET
-#define ERR_MATERIASOURCE_CREATE_MATERIA RED "MateriaSource cannot createMateria(): wrong type or full slots" RESET
+#define ERR_MATERIASOURCE_CREATE_MATERIA RED "MateriaSource cannot createMateria(): materia not learned or full slots" RESET
 
 //main
-#define MSG_CHOOSE_ACTION LIGHT_YELLOW "Choose action:\n'info' 'learnMateria' 'createMateria' 'equip' 'unequip' 'use' 'exit'" RESET
-#define MSG_CHOOSE_MATERIA LIGHT_YELLOW "Choose materia:\n'ice' 'cure'" RESET
-#define MSG_CHOOSE_INDEX LIGHT_YELLOW "Choose index (0 - 3)" RESET
-#define MSG_CHOOSE_TARGET LIGHT_YELLOW "Choose target:\n 'target1' 'target2'" RESET
+#define MSG_CHOOSE_ACTION BLUE "Choose action:\n'learnMateria' 'createMateria' 'equip' 'unequip' 'use' 'exit'" RESET
+#define MSG_CHOOSE_MATERIA BLUE "Choose materia:\n'ice' 'cure'" RESET
+#define MSG_CHOOSE_INDEX BLUE "Choose index: (0 - 3)" RESET
+#define MSG_CHOOSE_TARGET BLUE "Choose target:\n'target1' 'target2'" RESET
 #define ERR_WRONG_CMD RED "Unknown command" RESET
 #endif

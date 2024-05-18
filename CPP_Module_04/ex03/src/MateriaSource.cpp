@@ -33,6 +33,9 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &obj) {
 }
 
 MateriaSource::~MateriaSource() {
+    for (int i = 0; i < 4; i++) {
+        delete slot[i];
+    }
     std::cout << MSG_MATERIASOURCE_DESTRUCTOR << std::endl;
 }
 
@@ -41,6 +44,7 @@ void MateriaSource::learnMateria(AMateria* m) {
         if (this->slot[i] == NULL && m != NULL) {
             std::cout << MSG_MATERIASOURCE_LEARN_MATERIA << std::endl;
             this->slot[i] = m->clone();
+            delete m;
             return;
         }
     }
@@ -56,4 +60,8 @@ AMateria* MateriaSource::createMateria(const std::string &type) {
     }
     std::cerr << ERR_MATERIASOURCE_CREATE_MATERIA << std::endl;
     return 0;
+}
+
+AMateria* MateriaSource::getMateriaSlots() {
+    return *slot;
 }

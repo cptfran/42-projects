@@ -39,6 +39,9 @@ Character& Character::operator=(const Character &obj) {
 }
 
 Character::~Character() {
+    for (int i = 0; i < 4; i++) {
+        delete slot[i];
+    }
     std::cout << MSG_CHARACTER_DESTRUCTOR << std::endl;
 }
 
@@ -70,6 +73,6 @@ void Character::use(int idx, ICharacter& target) {
     if (idx >= 0 && idx < 4 && this->slot[idx] != NULL) {
         this->slot[idx]->use(target);
     } else {
-        std::cerr << RED << "Character " << this->name << " cannot use materia: wrong slot" << RESET << std::endl;
+        std::cerr << RED << "Character '" << this->name << "' cannot use materia: wrong slot" << RESET << std::endl;
     }
 }

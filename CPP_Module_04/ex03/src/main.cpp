@@ -6,12 +6,33 @@
 #include "../incl/Ice.hpp"
 #include "../incl/Cure.hpp"
 
+std::string* charInv[4];
+std::string* matInv[4];
+
+void add_info(std::string* inv, std::string& mat) {
+    static int oldest = 0;
+    for (int i = 0; i < 4; i++) {
+        if (inv[i].empty()) {
+            inv[i] = mat;
+            oldest = i;
+            return;
+        }
+    }
+    inv[oldest] = mat;
+    if (oldest == 3) {
+        oldest = 0;
+    } else {
+        ++oldest;
+    }
+}
+
 void handleLearnMateria(IMateriaSource* materiaSource, std::string& input) {
     while (true) {
         std::cout << MSG_CHOOSE_MATERIA << std::endl;
         std::getline(std::cin, input);
         if (input == "ice") {
             materiaSource->learnMateria(new Ice());
+
             return;
         } else if (input == "cure") {
             materiaSource->learnMateria(new Cure());
@@ -86,7 +107,7 @@ void handleUse(ICharacter* me, ICharacter* target1, ICharacter* target2) {
 
 int main() {
     IMateriaSource* materiaSource = new MateriaSource();
-    AMateria* materia;
+    AMateria* materia = NULL;
     ICharacter* me = new Character("me");
     ICharacter* target1 = new Character("target1");
     ICharacter* target2 = new Character("target2");
@@ -95,6 +116,10 @@ int main() {
         std::cout << MSG_CHOOSE_ACTION << std::endl;
         std::getline(std::cin, input);
         if (input == "exit") {
+            delete materiaSource;
+            delete me;
+            delete target1;
+            delete target2;
             return 0;
         } else if (input == "learnMateria") {
             handleLearnMateria(materiaSource, input);
@@ -106,8 +131,9 @@ int main() {
             handleUnequip(me);
         } else if (input == "use") {
             handleUse(me, target1, target2);
-        } else if (input == "info") {
-            printInfo(materiaSource, me);
+        } else {
+            std::cerr << ERR_WRONG_CMD << std::endl;
+            continue;
         }
     }
 }
