@@ -1,9 +1,9 @@
 .PHONY: all clean fclean re
 
-NAME = Animal
+NAME = AAnimal
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g
+SRC = main.cpp AAnimal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)
