@@ -11,6 +11,9 @@ public:
     ~MateriaSource();
     void learnMateria(AMateria* m);
     AMateria* createMateria(const std::string& type);
+    AMateria* getMateriaSlots();
 private:
     AMateria* slot[4];
 };
+
+#endif

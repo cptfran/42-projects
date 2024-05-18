@@ -4,6 +4,7 @@
 #include "ICharacter.hpp"
 
 class Cure : public AMateria {
+public:
     Cure();
     Cure(const std::string& type);
     ~Cure();

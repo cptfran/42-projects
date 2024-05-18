@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Msg.hpp"
-#include "Ice.hpp"
+#include "../incl/Msg.hpp"
+#include "../incl/Ice.hpp"
 
-Ice::Ice() : AMateria() {
+Ice::Ice() : AMateria("ice") {
     std::cout << MSG_ICE_DEFAULT_CONSTRUCTOR << std::endl;
 }
 
@@ -15,9 +15,10 @@ Ice::~Ice() {
 }
 
 AMateria* Ice::clone() const {
+    std::cout << MSG_ICE_CLONE << std::endl;
     return new Ice(this->type);
 }
 
 void Ice::use(ICharacter& target) {
-    std::cout << YELLOW << "* shoots an ice bolt at " << target.getName() << " *" << RESET << std::endl;
+    std::cout << LIGHT_CYAN << "* shoots an ice bolt at " << target.getName() << " *" << RESET << std::endl;
 }
