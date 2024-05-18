@@ -42,7 +42,7 @@
 #define ERR_MATERIASOURCE_CREATE_MATERIA RED "MateriaSource cannot createMateria(): materia not learned or full slots" RESET
 
 //main
-#define MSG_CHOOSE_ACTION BLUE "Choose action:\n'learnMateria' 'createMateria' 'equip' 'unequip' 'use' 'exit'" RESET
+#define MSG_CHOOSE_ACTION BLUE "Choose action:\n'info' 'learnMateria' 'createMateria' 'equip' 'unequip' 'use' 'exit'" RESET
 #define MSG_CHOOSE_MATERIA BLUE "Choose materia:\n'ice' 'cure'" RESET
 #define MSG_CHOOSE_INDEX BLUE "Choose index: (0 - 3)" RESET
 #define MSG_CHOOSE_TARGET BLUE "Choose target:\n'target1' 'target2'" RESET
