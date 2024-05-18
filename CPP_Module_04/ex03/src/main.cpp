@@ -100,33 +100,25 @@ void handleUnequip(ICharacter* me) {
 
 void handleUse(ICharacter* me, ICharacter* target1, ICharacter* target2) {
     std::string input;
+    std::string input2;
     while (true) {
         std::cout << MSG_CHOOSE_TARGET << std::endl;
         std::getline(std::cin, input);
-        if (input == "target1") {
+        if (input == "target1" || input == "target2") {
             std::cout << MSG_CHOOSE_INDEX << std::endl;
-            std::getline(std::cin, input);
-            std::istringstream iss(input);
+            std::getline(std::cin, input2);
+            std::istringstream iss(input2);
             int idx;
             if (!(iss >> idx)) {
                 std::cerr << RED << "Error: it's not a number: " << input << RESET << std::endl;
                 continue;
             } else {
                 std::cout << MSG_CHOOSE_TARGET << std::endl;
-                me->use(idx, *target1);
-                return;
-            }
-        } else if (input == "target2") {
-            std::cout << MSG_CHOOSE_INDEX << std::endl;
-            std::getline(std::cin, input);
-            std::istringstream iss(input);
-            int idx;
-            if (!(iss >> idx)) {
-                std::cerr << RED << "Error: it's not a number: " << input << RESET << std::endl;
-                continue;
-            } else {
-                std::cout << MSG_CHOOSE_TARGET << std::endl;
-                me->use(idx, *target2);
+                if (input == "target1") {
+                    me->use(idx, *target1);
+                } else {
+                    me->use(idx, *target2);
+                }
                 return;
             }
         } else {
