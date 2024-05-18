@@ -39,9 +39,12 @@ Character& Character::operator=(const Character &obj) {
 }
 
 Character::~Character() {
-    for (int i = 0; i < 4; i++) {
-        delete slot[i];
-    }
+    // for (int i = 0; i < 4; i++) {
+    //     if (slot[i] != NULL) {
+    //         delete slot[i];
+    //     }
+    //
+    // }
     std::cout << MSG_CHARACTER_DESTRUCTOR << std::endl;
 }
 
