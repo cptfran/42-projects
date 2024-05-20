@@ -2,7 +2,7 @@
 
 NAME = AMateria
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g
+FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC_DIR = src
 INCLUDE_DIR = include
 OBJ_DIR = obj
