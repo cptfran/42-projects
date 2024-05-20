@@ -5,8 +5,8 @@
 #include <iostream>
 
 int main() {
-    AAnimal test;
-//    Dog test2;
-//    Cat test3;
+    // AAnimal test;
+    Dog test2;
+    Cat test3;
     return 0;
 }

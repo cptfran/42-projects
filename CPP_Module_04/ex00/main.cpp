@@ -17,7 +17,7 @@ int main() {
     std::cout << j->getType() << " ";
     j->makeSound();
     std::cout << i->getType() << " ";
-    j->makeSound();
+    i->makeSound();
     std::cout << k->getType() << " ";
     k->makeSound();
     std::cout << l->getType() << " ";
