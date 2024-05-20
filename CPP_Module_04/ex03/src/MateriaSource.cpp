@@ -48,6 +48,7 @@ void MateriaSource::learnMateria(AMateria* m) {
             return;
         }
     }
+    delete m;
     std::cerr << ERR_MATERIASOURCE_LEARN_MATERIA << std::endl;
 }
 

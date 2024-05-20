@@ -24,7 +24,7 @@ void printInfo(const std::string& mat) {
     }
     std::cout << std::endl;
     std::cout << std::setfill('*') << std::setw(53) << "*" << std::endl;
-    std::cout << "|" << std::setw(20) << std::setfill(' ') << std::right << "Current materia |";
+    std::cout << "|" << std::setw(20) << std::setfill(' ') << std::right << "Created materia |";
     std::cout << std::setw(30) << std::setfill(' ') << std::right << mat << " |";
     std::cout << std::endl;
     std::cout << std::setfill('*') << std::setw(53) << "*" << RESET << std::endl;
@@ -51,7 +51,7 @@ void addInfo(std::string inv[], const std::string& mat) {
 
 void removeInfoChar(int idx) {
     if (idx >= 0 && idx < 4) {
-        matInv[idx] = "";
+        charInv[idx] = "";
     }
 }
 
