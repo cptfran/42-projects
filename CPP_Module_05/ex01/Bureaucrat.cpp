@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Colors.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : name("default"), grade(80) {}
 
@@ -55,4 +56,13 @@ void Bureaucrat::decrementGrade() {
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj) {
     os << YELLOW << obj.getName() << RESET << ", bureaucrat grade " << CYAN <<  obj.getGrade() << RESET;
     return os;
+}
+
+void Bureaucrat::signForm(const Form& obj) const {
+    if (obj.getIsSigned()) {
+        std::cout << YELLOW << this->name << LIGHT_GREEN << " signed " << PURPLE << obj.getName() << RESET;
+    } else {
+        std::cout << YELLOW << this->name << RED << " couldn't sign " << PURPLE << obj.getName() << RESET
+            << RED << " because the grade is too low" << RESET << std::endl;
+    }
 }
