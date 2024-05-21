@@ -1,10 +1,10 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Colors.hpp"
 
-AForm::AForm() : name("default"), isSigned(false), gradeToSign(70), gradeToExecute(25) {}
+AForm::AForm() : name("default"), isSigned(false), gradeToSign(70), gradeToExecute(25), target("none") {}
 
-AForm::AForm(const std::string& name, const int& gradeToSign, const int& gradeToExecute) : name(name),
-                                                                                           isSigned(false), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute) {}
+AForm::AForm(const std::string& name, const int& gradeToSign, const int& gradeToExecute, const std::string& target)
+    : name(name), isSigned(false), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute), target(target) {}
 
 AForm::AForm(const AForm& obj) : name(obj.name), isSigned(obj.isSigned), gradeToSign(obj.gradeToSign),
                                  gradeToExecute(obj.gradeToExecute) {}
@@ -40,6 +40,10 @@ const int& AForm::getGradeToSign() const {
 
 const int& AForm::getGradeToExecute() const {
     return this->gradeToExecute;
+}
+
+const std::string& AForm::getTarget() const {
+    return this->target;
 }
 
 

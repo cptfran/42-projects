@@ -1,11 +1,11 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Colors.hpp"
 
 int main() {
 
     std::cout << LIGHT_CYAN << "\n********************************" << RESET << std::endl;
-    AForm f1("GD3", 67, 20);
+    Form f1("GD3", 67, 20);
     std::cout << f1 << std::endl;
     Bureaucrat b1;
     try {

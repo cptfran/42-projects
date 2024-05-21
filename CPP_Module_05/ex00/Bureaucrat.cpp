@@ -1,7 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "Colors.hpp"
 
-Bureaucrat::Bureaucrat() : name("default"), grade(80) {}
+Bureaucrat::Bureaucrat() : name("Joe"), grade(80) {}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name), grade(grade) {
     if (grade > 150) {
