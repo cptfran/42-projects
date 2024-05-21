@@ -20,7 +20,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-void ShrubberyCreationForm::createShrubberyFile() {
+void ShrubberyCreationForm::createShrubberyFile() const {
     std::ofstream outfile((this->getTarget() + "_shrubbery").c_str());
     if (!outfile) {
         std::cerr << RED "Error: could not open and write to file" RESET << std::endl;
@@ -28,4 +28,8 @@ void ShrubberyCreationForm::createShrubberyFile() {
     }
     outfile << SHRUBBERY_ART;
     outfile.close();
+}
+
+void ShrubberyCreationForm::executeAction() const {
+    this->createShrubberyFile();
 }

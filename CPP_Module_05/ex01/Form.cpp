@@ -42,7 +42,6 @@ const int& AForm::getGradeToExecute() const {
     return this->gradeToExecute;
 }
 
-
 std::ostream& operator<<(std::ostream& os, const AForm& obj) {
     os << "Form name: " << PURPLE << obj.getName() << RESET << "\nSigned: " << PURPLE
         <<  (obj.getIsSigned() ? "yes" : "no") << RESET << " \nGrade to sign: " << PURPLE << obj.getGradeToSign()
@@ -51,6 +50,7 @@ std::ostream& operator<<(std::ostream& os, const AForm& obj) {
 }
 
 void AForm::beSigned(const Bureaucrat& obj) {
+    std::cout << LIGHT_YELLOW "Signing..." RESET << std::endl;
     if (obj.getGrade() <= this->gradeToSign) {
         this->isSigned = true;
     } else {
