@@ -1,10 +1,10 @@
-#include "Form.hpp"
-#include "Colors.hpp"
+#include "../incl/AForm.hpp"
+#include "../incl/Colors.hpp"
 
-AForm::AForm() : name("default"), isSigned(false), gradeToSign(70), gradeToExecute(25) {}
+AForm::AForm() : name("default"), isSigned(false), gradeToSign(70), gradeToExecute(25), target("none") {}
 
-AForm::AForm(const std::string& name, const int& gradeToSign, const int& gradeToExecute) : name(name),
-                                                                                           isSigned(false), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute) {}
+AForm::AForm(const std::string& name, const int& gradeToSign, const int& gradeToExecute, const std::string& target)
+    : name(name), isSigned(false), gradeToSign(gradeToSign), gradeToExecute(gradeToExecute), target(target) {}
 
 AForm::AForm(const AForm& obj) : name(obj.name), isSigned(obj.isSigned), gradeToSign(obj.gradeToSign),
                                  gradeToExecute(obj.gradeToExecute) {}
@@ -42,11 +42,16 @@ const int& AForm::getGradeToExecute() const {
     return this->gradeToExecute;
 }
 
+const std::string& AForm::getTarget() const {
+    return this->target;
+}
+
 
 std::ostream& operator<<(std::ostream& os, const AForm& obj) {
     os << "Form name: " << PURPLE << obj.getName() << RESET << "\nSigned: " << PURPLE
-        <<  (obj.getIsSigned() ? "yes" : "no") << RESET << " \nGrade to sign: " << PURPLE << obj.getGradeToSign()
-        << RESET << "\nGrade to execute: " << PURPLE << obj.getGradeToExecute() << RESET << std::endl;
+        <<  (obj.getIsSigned() ? "yes" : "no") << RESET << "\nGrade to sign: " << PURPLE << obj.getGradeToSign()
+        << RESET << "\nGrade to execute: " << PURPLE << obj.getGradeToExecute() << RESET << "\nTarget: " << PURPLE
+        << obj.getTarget() << std::endl;
     return os;
 }
 

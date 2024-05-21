@@ -1,6 +1,6 @@
-#include "Bureaucrat.hpp"
-#include "Colors.hpp"
-#include "Form.hpp"
+#include "../incl/Bureaucrat.hpp"
+#include "../incl/Colors.hpp"
+#include "../incl/AForm.hpp"
 
 Bureaucrat::Bureaucrat() : name("Joe"), grade(80) {}
 

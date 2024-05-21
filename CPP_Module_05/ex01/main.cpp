@@ -1,29 +1,40 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include "Colors.hpp"
 
 int main() {
-    try {
-        Bureaucrat b1("Leo", 149);
-        std::cout << b1 << std::endl;
-        std::cout << LIGHT_MAGENTA << "decrementing grade" << RESET << std::endl;
-        b1.decrementGrade();
-        std::cout << b1 << std::endl;
-        std::cout << LIGHT_MAGENTA << "decrementing grade" << RESET << std::endl;
-        b1.decrementGrade();
 
-    } catch (std::exception& e) {
-        std::cerr << e.what() << std::endl;
-    }
+    std::cout << LIGHT_CYAN << "\n********************************" << RESET << std::endl;
+    AForm f1("GD3", 67, 20);
+    std::cout << f1 << std::endl;
+    Bureaucrat b1;
     try {
-        Bureaucrat b2("Kyle", 2);
-        std::cout << b2 << std::endl;
-        std::cout << LIGHT_GREEN << "incrementing grade" << RESET << std::endl;
-        b2.incrementGrade();
-        std::cout << b2 << std::endl;
-        std::cout << LIGHT_GREEN << "incrementing grade" << RESET << std::endl;
-        b2.incrementGrade();
+        b1 = Bureaucrat("default", 120);
     } catch (std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
+    std::cout << b1 << std::endl;
+    try {
+        f1.beSigned(b1);
+    } catch (std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
+    b1.signForm(f1);
+
+    std::cout << LIGHT_CYAN << "\n********************************" << RESET << std::endl;
+    std::cout << f1 << std::endl;
+    try {
+        b1 = Bureaucrat("default", 60);
+    } catch (std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << b1 << std::endl;
+    try {
+        f1.beSigned(b1);
+    } catch (std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
+    b1.signForm(f1);
+
     return 0;
 }
