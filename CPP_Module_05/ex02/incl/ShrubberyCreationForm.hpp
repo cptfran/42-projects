@@ -9,7 +9,9 @@ public:
     ShrubberyCreationForm(const ShrubberyCreationForm& form);
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm& form);
     ~ShrubberyCreationForm();
-    void createShrubberyFile();
+    void executeAction() const;
+private:
+    void createShrubberyFile() const;
 };
 
 #endif

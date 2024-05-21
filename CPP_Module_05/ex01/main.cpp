@@ -11,30 +11,21 @@ int main() {
     try {
         b1 = Bureaucrat("default", 120);
     } catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
     std::cout << b1 << std::endl;
-    try {
-        f1.beSigned(b1);
-    } catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
-    }
     b1.signForm(f1);
+    std::cout << "\n" << f1;
 
     std::cout << LIGHT_CYAN << "\n********************************" << RESET << std::endl;
     std::cout << f1 << std::endl;
     try {
         b1 = Bureaucrat("default", 60);
     } catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
+        std::cerr << e.what() << std::endl;
     }
     std::cout << b1 << std::endl;
-    try {
-        f1.beSigned(b1);
-    } catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
-    }
     b1.signForm(f1);
-
+    std::cout << "\n" << f1;
     return 0;
 }
