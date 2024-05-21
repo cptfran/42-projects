@@ -1,13 +1,13 @@
-#include "ShrubberyCreationForm.hpp"
-#include "Colors.hpp"
-#include "AsciiArtDefines.hpp"
+#include "../incl/ShrubberyCreationForm.hpp"
+#include "../incl/Colors.hpp"
+#include "../incl/AsciiArtDefines.hpp"
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("ShrubberyCreationForm", 145, 137, "none") {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
-    : AForm("ShrubberyCreationForm",145, 137, target) {}
+    : AForm("ShrubberyCreationForm", 145, 137, target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &form) : AForm(form) {}
 

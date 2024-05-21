@@ -1,7 +1,7 @@
 #ifndef MSG_HPP
 #define MSG_HPP
 
-#define SHRUBBERY_ART ".\n"\
+#define SHRUBBERY_ART "\n"\
 "                                              .         ;  \n"\
 "                 .              .              ;%     ;;   \n"\
 "                   ,           ,                :;%  %;   \n"\

@@ -4,7 +4,7 @@ NAME = AMateria
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC_DIR = src
-INCLUDE_DIR = include
+INCLUDE_DIR = incl
 OBJ_DIR = obj
 SRC = AMateria.cpp Character.cpp Cure.cpp Ice.cpp main.cpp MateriaSource.cpp
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))

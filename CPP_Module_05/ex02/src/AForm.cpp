@@ -1,5 +1,5 @@
-#include "AForm.hpp"
-#include "Colors.hpp"
+#include "../incl/AForm.hpp"
+#include "../incl/Colors.hpp"
 
 AForm::AForm() : name("default"), isSigned(false), gradeToSign(70), gradeToExecute(25), target("none") {}
 
@@ -49,8 +49,9 @@ const std::string& AForm::getTarget() const {
 
 std::ostream& operator<<(std::ostream& os, const AForm& obj) {
     os << "Form name: " << PURPLE << obj.getName() << RESET << "\nSigned: " << PURPLE
-        <<  (obj.getIsSigned() ? "yes" : "no") << RESET << " \nGrade to sign: " << PURPLE << obj.getGradeToSign()
-        << RESET << "\nGrade to execute: " << PURPLE << obj.getGradeToExecute() << RESET << std::endl;
+        <<  (obj.getIsSigned() ? "yes" : "no") << RESET << "\nGrade to sign: " << PURPLE << obj.getGradeToSign()
+        << RESET << "\nGrade to execute: " << PURPLE << obj.getGradeToExecute() << RESET << "\nTarget: " << PURPLE
+        << obj.getTarget() << std::endl;
     return os;
 }
 

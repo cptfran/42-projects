@@ -1,6 +1,6 @@
-#include "Bureaucrat.hpp"
-#include "Colors.hpp"
-#include "AForm.hpp"
+#include "../incl/Bureaucrat.hpp"
+#include "../incl/Colors.hpp"
+#include "../incl/AForm.hpp"
 
 Bureaucrat::Bureaucrat() : name("Joe"), grade(80) {}
 
@@ -53,7 +53,7 @@ void Bureaucrat::decrementGrade() {
     this->grade++;
 }
 
-void Bureaucrat::signForm(const Form& obj) const {
+void Bureaucrat::signForm(const AForm& obj) const {
     if (obj.getIsSigned()) {
         std::cout << YELLOW << this->name << LIGHT_GREEN << " signed " << PURPLE << obj.getName() << RESET;
     } else {

@@ -1,21 +1,30 @@
 .PHONY: all clean fclean re
 
-NAME = Bureaucrat
+NAME = AForm
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Bureaucrat.cpp Form.cpp
-OBJ = $(SRC:%.cpp=%.o)
+SRC_DIR = src
+INCLUDE_DIR = incl
+OBJ_DIR = obj
+SRC = AForm.cpp Bureaucrat.cpp main.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(FLAGS) -o $(NAME) $(OBJ)
 
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CC) $(FLAGS) -I $(INCLUDE_DIR) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
 %.o: %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
