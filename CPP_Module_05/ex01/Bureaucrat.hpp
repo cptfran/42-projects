@@ -22,7 +22,7 @@ public:
     int getGrade() const;
     void incrementGrade();
     void decrementGrade();
-    void signForm(const AForm& obj) const;
+    void signForm(AForm& obj) const;
 private:
     const std::string name;
     int grade;

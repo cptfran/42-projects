@@ -53,12 +53,13 @@ void Bureaucrat::decrementGrade() {
     this->grade++;
 }
 
-void Bureaucrat::signForm(const AForm& obj) const {
-    if (obj.getIsSigned()) {
-        std::cout << YELLOW << this->name << LIGHT_GREEN << " signed " << PURPLE << obj.getName() << RESET;
-    } else {
-        std::cout << YELLOW << this->name << RED << " couldn't sign " << PURPLE << obj.getName() << RESET
-                  << RED << " because the grade is too low" << RESET << std::endl;
+void Bureaucrat::signForm(AForm& obj) const {
+    try {
+        obj.beSigned(*this);
+        std::cout << YELLOW << this->name << LIGHT_GREEN << " signed " << PURPLE << obj.getName() << RESET << std::endl;
+    } catch (std::exception& e) {
+        std::cerr << YELLOW << this->name << RED << " couldn't sign " << PURPLE << obj.getName() << RESET
+                  << RED << " because " << e.what() << RESET << std::endl;
     }
 }
 

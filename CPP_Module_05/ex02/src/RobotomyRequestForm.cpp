@@ -21,12 +21,12 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &f
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-void RobotomyRequestForm::makeNoise() {
+void RobotomyRequestForm::makeNoise() const {
     std::cout << LIGHT_MAGENTA << NOISE " Drilling noises " NOISE << RESET
         << std::endl;
 }
 
-void RobotomyRequestForm::robotomize() {
+void RobotomyRequestForm::robotomize() const {
     srand(time(0));
     int random = rand() % 2;
     if (random == 1) {
@@ -34,4 +34,9 @@ void RobotomyRequestForm::robotomize() {
     } else {
         std::cout << PURPLE << this->getTarget() << LIGHT_RED << ": robotomy failed" << RESET << std::endl;
     }
+}
+
+void RobotomyRequestForm::executeAction() const {
+    this->makeNoise();
+    this->robotomize();
 }

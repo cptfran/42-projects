@@ -24,6 +24,10 @@ const char* AForm::GradeTooLowException::what() const throw() {
     return RED "Grade too low" RESET;
 }
 
+const char* AForm::FormNotSignedException::what() const throw() {
+    return RED "Form is not signed" RESET;
+}
+
 AForm::~AForm() {}
 
 const std::string& AForm::getName() const {
@@ -46,19 +50,30 @@ const std::string& AForm::getTarget() const {
     return this->target;
 }
 
-
 std::ostream& operator<<(std::ostream& os, const AForm& obj) {
     os << "Form name: " << PURPLE << obj.getName() << RESET << "\nSigned: " << PURPLE
         <<  (obj.getIsSigned() ? "yes" : "no") << RESET << "\nGrade to sign: " << PURPLE << obj.getGradeToSign()
         << RESET << "\nGrade to execute: " << PURPLE << obj.getGradeToExecute() << RESET << "\nTarget: " << PURPLE
-        << obj.getTarget() << std::endl;
+        << obj.getTarget() << RESET << std::endl;
     return os;
 }
 
 void AForm::beSigned(const Bureaucrat& obj) {
+    std::cout << LIGHT_YELLOW "Signing..." RESET << std::endl;
     if (obj.getGrade() <= this->gradeToSign) {
         this->isSigned = true;
     } else {
         throw GradeTooLowException();
     }
+}
+
+void AForm::execute(const Bureaucrat &executor) const {
+    std::cout << LIGHT_YELLOW "Executing..." << std::endl;
+    if (!this->isSigned) {
+        throw FormNotSignedException();
+    }
+    if (executor.getGrade() > this->gradeToExecute) {
+        throw GradeTooLowException();
+    }
+    this->executeAction();
 }

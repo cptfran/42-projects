@@ -9,8 +9,11 @@ public:
     RobotomyRequestForm(const RobotomyRequestForm& form);
     RobotomyRequestForm& operator=(const RobotomyRequestForm& form);
     ~RobotomyRequestForm();
-    void makeNoise();
-    void robotomize();
+    void executeAction() const;
+private:
+    void makeNoise() const;
+    void robotomize() const;
+
 };
 
 #endif
