@@ -4,12 +4,13 @@
 #include <string>
 
 class ScalarConverter {
+public:
+    static void convert(const char* val);
 private:
     ScalarConverter();
     ScalarConverter(const ScalarConverter& toCopy);
     ScalarConverter& operator=(const ScalarConverter& toCopy);
     ~ScalarConverter();
-    static void convert(const char* val);
 };
 
 bool isPureDigitStr(const char* str);
