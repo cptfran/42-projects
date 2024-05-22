@@ -1,6 +1,6 @@
 .PHONY: all clean fclean re
 
-NAME = AAnimal
+NAME = ScalarConverter
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 SRC = main.cpp ScalarConverter.cpp
