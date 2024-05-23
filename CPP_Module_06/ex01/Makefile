@@ -1,9 +1,9 @@
 .PHONY: all clean fclean re
 
-NAME = ScalarConverter
+NAME = Serializer
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
-SRC = NumRange.cpp main.cpp Print.cpp ScalarConverter.cpp StringRecognition.cpp
+SRC = main.cpp Serializer.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)
