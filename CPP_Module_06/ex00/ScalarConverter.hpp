@@ -21,7 +21,7 @@ bool isFloatString(const std::string& str, size_t strLen);
 bool isDoubleString(const std::string& str);
 int verifyType(const std::string& val);
 
-//NumRange.cpp
+//NumRange.cppw
 bool isNumInCharRange(double num);
 bool isNumInIntRange(double num);
 bool isNumInFloatRange(double num);
