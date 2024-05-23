@@ -3,9 +3,11 @@
 
 #include <cstdint>
 
-typedef struct sData {
-
-} Data;
+struct Data {
+    int iVal;
+    float fVal;
+    double dVal;
+};
 
 class Serializer {
 public:
