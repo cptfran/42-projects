@@ -3,7 +3,7 @@
 NAME = ScalarConverter
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
-SRC = main.cpp ScalarConverter.cpp
+SRC = NumRange.cpp main.cpp Print.cpp ScalarConverter.cpp StringRecognition.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)

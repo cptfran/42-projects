@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cfloat>
 #include "ScalarConverter.hpp"
 #include "Colors.hpp"
 
