@@ -5,7 +5,7 @@
 
 class ScalarConverter {
 public:
-    static void convert(const char* val);
+    static void convert(const std::string& val);
 private:
     ScalarConverter();
     ScalarConverter(const ScalarConverter& toCopy);
@@ -13,7 +13,7 @@ private:
     ~ScalarConverter();
 };
 
-bool isPureDigitStr(const char* str);
-int verifyType(const char* val);
+bool isPureDigitStr(const std::string& str);
+int verifyType(const std::string& val);
 
 #endif
