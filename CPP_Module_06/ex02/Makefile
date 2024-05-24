@@ -3,7 +3,7 @@
 NAME = Serializer
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
-SRC = main.cpp Serializer.cpp
+SRC = A.cpp B.cpp C.cpp main.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)

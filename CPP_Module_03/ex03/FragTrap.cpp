@@ -7,9 +7,9 @@ FragTrap::FragTrap() : ClapTrap() {
 
 FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
     std::cout << LIGHT_GREEN << "FragTrap " << this->name << " has joined the battlefield" << RESET << std::endl;
-    this->hitPoints = this->defHitPoints;
-    this->energyPoints = this->defEnergyPoints;
-    this->attackDamage = this->defAttackDamage;
+    this->hitPoints = FragTrap::defHitPoints;
+    this->energyPoints = FragTrap::defEnergyPoints;
+    this->attackDamage = FragTrap::defAttackDamage;
 }
 
 FragTrap::FragTrap(const FragTrap& obj) : ClapTrap(obj) {
