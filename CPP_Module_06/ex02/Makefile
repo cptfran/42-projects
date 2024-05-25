@@ -2,7 +2,7 @@
 
 NAME = ABC
 CC = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g
+FLAGS = -Wall -Wextra -Werror -std=c++98
 SRC = Base.cpp main.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
