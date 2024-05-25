@@ -7,9 +7,9 @@ ScavTrap::ScavTrap() : ClapTrap() {
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
     std::cout << LIGHT_GREEN << "ScavTrap " << this->name << " has joined the battlefield" << RESET << std::endl;
-    this->hitPoints = this->defHitPoints;
-    this->energyPoints = this->defEnergyPoints;
-    this->attackDamage = this->defAttackDamage;
+    this->hitPoints = ScavTrap::defHitPoints;
+    this->energyPoints = ScavTrap::defEnergyPoints;
+    this->attackDamage = ScavTrap::defAttackDamage;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& obj) : ClapTrap(obj) {
