@@ -1,9 +1,9 @@
 .PHONY: all clean fclean re
 
-NAME = Serializer
+NAME = ABC
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
-SRC = A.cpp B.cpp C.cpp main.cpp
+SRC = Base.cpp main.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 all: $(NAME)

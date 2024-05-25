@@ -1,6 +1,5 @@
 #include <cstdlib>
 #include <iostream>
-#include <typeinfo>
 #include "Base.hpp"
 #include "A.hpp"
 #include "B.hpp"
@@ -20,6 +19,7 @@ Base* generate() {
             return new C;
         default:
             std::cerr << RED "Error: roll the dice failed" RESET << std::endl;
+        return NULL;
     }
 }
 // dynamic cast tries to convert to pointer type A, B or C, if succeds, returns pointer to p, if no returns null
@@ -37,15 +37,15 @@ void identify(Base* p) {
 
 void identify(Base& p) {
     try {
-        dynamic_cast<A&>(p);
+        (void)dynamic_cast<A&>(p);
         std::cout << "A" << std::endl;
     } catch (std::exception&) {
         try {
-            dynamic_cast<B&>(p);
+            (void)dynamic_cast<B&>(p);
             std::cout << "B" << std::endl;
         } catch (std::exception&) {
             try {
-                dynamic_cast<C&>(p);
+                (void)dynamic_cast<C&>(p);
                 std::cout << "C" << std::endl;
             } catch (std::exception&) {
                 std::cerr << RED "Verification error" RESET << std::endl;
