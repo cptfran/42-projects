@@ -1,27 +1,20 @@
 #include <iostream>
-#include <vector>
-#include "easyfind.hpp"
+#include "Span.hpp"
 #include "Colors.hpp"
 
-int main() {
-    std::vector<int> intVec;
-    intVec.push_back(1);
-    intVec.push_back(2);
-    intVec.push_back(3);
-    intVec.push_back(4);
-    intVec.push_back(5);
+int main()
+{
     try {
-        const std::vector<int>::iterator it = easyfind(intVec, 3);
-        std::cout << "Found number: " << *it << std::endl;
-        (void)it;
-    } catch (std::exception& e) {
-        std::cerr << RED << e.what() << RESET << std::endl;
+        std::vector<int> numbers;
+        for (int i = 1; i <= 1000; i++) {
+            numbers.push_back(i);
+        }
+        Span numbersObj(1000);
+        numbersObj.addNumbersByRangeOfIterators(numbers.begin(), numbers.end());
+        std::cout << LIGHT_GREEN << "Shortest span: " << numbersObj.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << numbersObj.longestSpan() << RESET << std::endl;
+    } catch (const std::length_error& e) {
+        std::cerr << RED << e.what() << std::endl;
     }
-    try {
-        const std::vector<int>::iterator it = easyfind(intVec, 6);
-        std::cout << "Found number: " << *it << std::endl;
-        (void)it;
-    } catch (std::exception& e) {
-        std::cerr << RED << e.what() << RESET << std::endl;
-    }
+    return 0;
 }
