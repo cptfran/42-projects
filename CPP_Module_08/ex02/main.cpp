@@ -1,20 +1,52 @@
 #include <iostream>
-#include "Span.hpp"
+#include <vector>
+#include "MutantStack.hpp"
 #include "Colors.hpp"
 
-int main()
-{
-    try {
-        std::vector<int> numbers;
-        for (int i = 1; i <= 1000; i++) {
-            numbers.push_back(i);
-        }
-        Span numbersObj(1000);
-        numbersObj.addNumbersByRangeOfIterators(numbers.begin(), numbers.end());
-        std::cout << LIGHT_GREEN << "Shortest span: " << numbersObj.shortestSpan() << std::endl;
-        std::cout << "Longest span: " << numbersObj.longestSpan() << RESET << std::endl;
-    } catch (const std::length_error& e) {
-        std::cerr << RED << e.what() << std::endl;
+int main() {
+
+    std::cout << LIGHT_GREEN "\nMutant stack:" RESET << std::endl;
+    MutantStack<int> mstack;
+    mstack.push(5);
+    mstack.push(17);
+    std::cout << mstack.top() << std::endl;
+    mstack.pop();
+    std::cout << mstack.size() << std::endl;
+    mstack.push(3);
+    mstack.push(5);
+    mstack.push(737);
+//[...]
+    mstack.push(0);
+    MutantStack<int>::iterator it = mstack.begin();
+    MutantStack<int>::iterator ite = mstack.end();
+    ++it;
+    --it;
+    while (it != ite)
+    {
+        std::cout << *it << std::endl;
+        ++it;
+    }
+
+    std::cout << LIGHT_GREEN "\nVector:" RESET << std::endl;
+    std::vector<int> vecStack;
+    vecStack.push_back(5);
+    vecStack.push_back(17);
+    std::cout << vecStack.back() << std::endl;
+    vecStack.pop_back();
+    std::cout << vecStack.size() << std::endl;
+    vecStack.push_back(3);
+    vecStack.push_back(5);
+    vecStack.push_back(737);
+//[...]
+    vecStack.push_back(0);
+    std::vector<int>::iterator vIt = vecStack.begin();
+    std::vector<int>::iterator vIte = vecStack.end();
+    ++vIt;
+    --vIt;
+    while (vIt != vIte)
+    {
+        std::cout << *vIt << std::endl;
+        ++vIt;
     }
     return 0;
 }
