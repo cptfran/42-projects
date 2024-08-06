@@ -3,7 +3,8 @@
 #include "AAnimal.hpp"
 #include "Brain.hpp"
 
-class Dog : public AAnimal {
+class Dog : public AAnimal
+{
 public:
     Dog();
     Dog(const Dog& obj);

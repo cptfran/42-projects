@@ -2,7 +2,8 @@
 #define WRONGANIMAL_HPP
 #include <string>
 
-class WrongAnimal {
+class WrongAnimal
+{
 public:
     WrongAnimal();
     WrongAnimal(const WrongAnimal& obj);

@@ -2,7 +2,8 @@
 #define  AMATERIA_HPP
 #include "ICharacter.hpp"
 
-class AMateria {
+class AMateria
+{
 public:
     AMateria();
     AMateria(const std::string& type);

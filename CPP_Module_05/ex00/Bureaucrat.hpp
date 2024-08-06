@@ -2,18 +2,21 @@
 #define BUREAUCRAT_HPP
 #include <iostream>
 
-class Bureaucrat {
+class Bureaucrat
+{
 public:
     Bureaucrat();
     Bureaucrat(const std::string& name, int grade);
     Bureaucrat(const Bureaucrat& obj);
     Bureaucrat& operator=(const Bureaucrat& obj);
     ~Bureaucrat();
-    class GradeTooHighException : public std::exception {
+    class GradeTooHighException : public std::exception
+    {
     public:
         const char* what() const throw();
     };
-    class GradeTooLowException : public std::exception {
+    class GradeTooLowException : public std::exception
+    {
         const char* what() const throw();
     };
     const std::string& getName() const;

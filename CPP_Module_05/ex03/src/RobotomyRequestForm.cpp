@@ -12,8 +12,10 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &form) : AForm(form) {}
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &form) {
-    if (this != &form) {
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &form)
+{
+    if (this != &form)
+    {
         AForm::operator=(form);
     }
     return *this;
@@ -21,22 +23,28 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &f
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-void RobotomyRequestForm::makeNoise() const {
+void RobotomyRequestForm::makeNoise() const
+{
     std::cout << LIGHT_MAGENTA << NOISE " Drilling noises " NOISE << RESET
         << std::endl;
 }
 
-void RobotomyRequestForm::robotomize() const {
+void RobotomyRequestForm::robotomize() const
+{
     srand(time(0));
     int random = rand() % 2;
-    if (random == 1) {
+    if (random == 1)
+    {
         std::cout << PURPLE << this->getTarget() << LIGHT_CYAN << " has been robotimized" << RESET << std::endl;
-    } else {
+    }
+    else
+    {
         std::cout << PURPLE << this->getTarget() << LIGHT_RED << ": robotomy failed" << RESET << std::endl;
     }
 }
 
-void RobotomyRequestForm::executeAction() const {
+void RobotomyRequestForm::executeAction() const
+{
     this->makeNoise();
     this->robotomize();
 }

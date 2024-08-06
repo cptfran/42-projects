@@ -3,20 +3,24 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-class AForm {
+class AForm
+{
 public:
     AForm();
     AForm(const std::string& name, const int& gradeToSign, const int& gradeToExecute, const std::string& target);
     AForm(const AForm& obj);
     AForm& operator=(const AForm& obj);
     virtual ~AForm();
-    class GradeTooHighException : public std::exception {
+    class GradeTooHighException : public std::exception
+    {
         const char* what() const throw();
     };
-    class GradeTooLowException : public std::exception {
+    class GradeTooLowException : public std::exception
+    {
         const char* what() const throw();
     };
-    class FormNotSignedException : public std::exception {
+    class FormNotSignedException : public std::exception
+    {
             const char* what() const throw();
     };
     const std::string& getName() const;

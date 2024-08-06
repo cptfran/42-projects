@@ -2,7 +2,8 @@
 #define CHARACTER_HPP
 #include "ICharacter.hpp"
 
-class Character : public ICharacter {
+class Character : public ICharacter
+{
 public:
     Character();
     Character(const std::string& name);

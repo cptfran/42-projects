@@ -2,28 +2,39 @@
 #include "../incl/MateriaSource.hpp"
 #include "../incl/Msg.hpp"
 
-MateriaSource::MateriaSource() : slot() {
+MateriaSource::MateriaSource() : slot()
+{
     std::cout << MSG_MATERIASOURCE_DEFAULT_CONSTRUCTOR << std::endl;
 }
 
-MateriaSource::MateriaSource(const MateriaSource& obj) : slot() {
-    for (int i = 0; i < 4; i++) {
-        if (obj.slot[i]) {
+MateriaSource::MateriaSource(const MateriaSource& obj) : slot()
+{
+    for (int i = 0; i < 4; i++)
+    {
+        if (obj.slot[i])
+        {
             this->slot[i] = obj.slot[i]->clone();
         }
     }
     std::cout << MSG_MATERIASOURCE_COPY_CONSTRUCTOR << std::endl;
 }
 
-MateriaSource& MateriaSource::operator=(const MateriaSource &obj) {
-    if (this != &obj) {
-        for (int i = 0; i < 4; i++) {
-            if (this->slot[i]) {
+MateriaSource& MateriaSource::operator=(const MateriaSource &obj)
+{
+    if (this != &obj)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (this->slot[i])
+            {
                 delete this->slot[i];
             }
-            if (obj.slot[i]) {
+            if (obj.slot[i])
+            {
                 this->slot[i] = obj.slot[i]->clone();
-            } else {
+            }
+            else
+            {
                 this->slot[i] = NULL;
             }
         }
@@ -32,16 +43,21 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &obj) {
     return *this;
 }
 
-MateriaSource::~MateriaSource() {
-    for (int i = 0; i < 4; i++) {
+MateriaSource::~MateriaSource()
+{
+    for (int i = 0; i < 4; i++)
+    {
         delete slot[i];
     }
     std::cout << MSG_MATERIASOURCE_DESTRUCTOR << std::endl;
 }
 
-void MateriaSource::learnMateria(AMateria* m) {
-    for (int i = 0; i < 4; i++) {
-        if (this->slot[i] == NULL && m != NULL) {
+void MateriaSource::learnMateria(AMateria* m)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        if (this->slot[i] == NULL && m != NULL)
+        {
             std::cout << MSG_MATERIASOURCE_LEARN_MATERIA << std::endl;
             this->slot[i] = m->clone();
             delete m;
@@ -52,9 +68,12 @@ void MateriaSource::learnMateria(AMateria* m) {
     std::cerr << ERR_MATERIASOURCE_LEARN_MATERIA << std::endl;
 }
 
-AMateria* MateriaSource::createMateria(const std::string &type) {
-    for (int i = 0; i < 4; i++) {
-        if (this->slot[i] != NULL && this->slot[i]->getType() == type) {
+AMateria* MateriaSource::createMateria(const std::string &type)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        if (this->slot[i] != NULL && this->slot[i]->getType() == type)
+        {
             std::cout << MSG_MATERIASOURCE_CREATE_MATERIA << std::endl;
             return this->slot[i];
         }
@@ -63,6 +82,7 @@ AMateria* MateriaSource::createMateria(const std::string &type) {
     return 0;
 }
 
-AMateria* MateriaSource::getMateriaSlots() {
+AMateria* MateriaSource::getMateriaSlots()
+{
     return *slot;
 }

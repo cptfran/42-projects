@@ -5,7 +5,8 @@
 #include "../incl/RobotomyRequestForm.hpp"
 #include "../incl/PresidentialPardonForm.hpp"
 
-void testShrubbery(Bureaucrat& b1) {
+void testShrubbery(Bureaucrat& b1)
+{
     std::cout << LIGHT_CYAN << "\n********************************" << RESET << std::endl;
     ShrubberyCreationForm shrubbery("home");
     std::cout << shrubbery << std::endl;
@@ -13,14 +14,16 @@ void testShrubbery(Bureaucrat& b1) {
     b1.signForm(shrubbery);
     b1.executeForm(shrubbery);
     std::cout << "\nIncrementing the grade" << std::endl;
-    for (int i = b1.getGrade(); i > shrubbery.getGradeToSign(); i--) {
+    for (int i = b1.getGrade(); i > shrubbery.getGradeToSign(); i--)
+    {
         b1.incrementGrade();
     }
     std::cout << b1 << std::endl;
     b1.signForm(shrubbery);
     b1.executeForm(shrubbery);
     std::cout << "\nIncrementing the grade" << std::endl;
-    for (int i = b1.getGrade(); i > shrubbery.getGradeToExecute(); i--) {
+    for (int i = b1.getGrade(); i > shrubbery.getGradeToExecute(); i--)
+    {
         b1.incrementGrade();
     }
     std::cout << b1 << std::endl;

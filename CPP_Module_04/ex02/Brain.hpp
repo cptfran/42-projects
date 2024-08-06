@@ -2,7 +2,8 @@
 #define BRAIN_HPP
 #include <string>
 
-class Brain {
+class Brain
+{
 public:
     Brain();
     Brain(const Brain& obj);

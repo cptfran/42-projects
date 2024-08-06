@@ -4,7 +4,8 @@
 
 class AMateria;
 
-class ICharacter {
+class ICharacter
+{
 public:
     virtual ~ICharacter() {};
     virtual const std::string& getName() const = 0;
