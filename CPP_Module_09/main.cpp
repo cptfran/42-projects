@@ -4,7 +4,9 @@
 #include <map>
 #include <unistd.h>
 #include <sys/unistd.h>
+#include <cstdlib>
 #include "Colors.hpp"
+#include "BitcoinExchange.hpp"
 
 int main(int argc, char **argv)
 {
@@ -13,25 +15,22 @@ int main(int argc, char **argv)
 		std::cerr << RED "Error: incorrect number of arguments\n" LIGHT_CYAN "Usage: ./btc <filename>" RESET << std::endl;
 		return 2;
 	}
-	if (access(argv[1], F_OK) == -1)
+	std::ifstream data_file("data.csv");
+	if (!data_file)
 	{
-		std::cerr << RED "Error: no such file or directory" RESET << std::endl;
+		std::cerr << RED "Error: unable to open the data file: 'data.csv'" RESET << std::endl;
 		return 3;
 	}
-	if (access(argv[1], R_OK) == -1)
+	std::ifstream input_file(argv[1]);
+	if (!input_file)
 	{
-		std::cerr << RED "Error: permission denied" RESET << std::endl;
+		std::cerr << RED "Error: unable to open the input file: '" << argv[1] << "'" RESET << std::endl;
 		return 4;
-	}
-	std::ifstream file(argv[1]);
-	if (!file)
-	{
-		std::cerr << RED << "Error: unable to open the file: '" << argv[1] << "'" RESET << std::endl;
-		return 5;
 	}
 	std::map<std::string, double> dateValueBtc;
 	std::string line;
-	while (std::getline(file, line))
+	std::getline(input_file, line);
+	while (std::getline(input_file, line))
 	{
 		const std::size_t commaPosition = line.find(',');
 		if (commaPosition != std::string::npos)
@@ -39,7 +38,7 @@ int main(int argc, char **argv)
 			dateValueBtc[line.substr(0, commaPosition)] = strtod(line.substr(commaPosition + 1).c_str(), NULL);
 		}
 	}
-	for (std::map<std::string, double>::iterator i = dateValueBtc.begin(); i != dateValueBtc.end(); ++i)
+	for (std::map<std::string, double>::iterator i = dateValueBtc.begin(); i != dateValueBtc.end(); i++)
 	{
 		std::cout << i->first + " => " << i->second << std::endl;
 	}
