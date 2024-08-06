@@ -29,17 +29,17 @@ int main(int argc, char **argv)
 		std::cerr << RED << "Error: unable to open the file: '" << argv[1] << "'" RESET << std::endl;
 		return 5;
 	}
-	std::map<std::string, double> dateValueBtc;
+	std::map<std::string, double> dateValueBtcInput;
 	std::string line;
 	while (std::getline(file, line))
 	{
 		const std::size_t commaPosition = line.find(',');
 		if (commaPosition != std::string::npos)
 		{
-			dateValueBtc[line.substr(0, commaPosition)] = strtod(line.substr(commaPosition + 1).c_str(), NULL);
+			dateValueBtcInput[line.substr(0, commaPosition)] = strtod(line.substr(commaPosition + 1).c_str(), NULL);
 		}
 	}
-	for (std::map<std::string, double>::iterator i = dateValueBtc.begin(); i != dateValueBtc.end(); ++i)
+	for (std::map<std::string, double>::iterator i = dateValueBtcInput.begin(); i != dateValueBtcInput.end(); ++i)
 	{
 		std::cout << i->first + " => " << i->second << std::endl;
 	}
