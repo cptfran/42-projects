@@ -15,39 +15,40 @@
 #define ERR_DIV_BY_ZERO RED "\nError: divison by 0" RESET
 
 
-class Fixed {
-	public:
-		Fixed();
-		Fixed(const Fixed &obj);
-		Fixed &operator=(const Fixed &obj);
-		Fixed(const int val);
-		Fixed(const float val);
-		~Fixed();
-		int getRawBits() const;
-		void setRawBits(int const raw);
-		float toFloat() const;
-		int toInt() const;
-		// 'friend' allows 'operator<<' to manipulate this class private members
-		friend std::ostream &operator<<(std::ostream &os, const Fixed &obj);
-		bool operator>(const Fixed &obj) const;
-		bool operator<(const Fixed &obj) const;
-		bool operator>=(const Fixed &obj) const;
-		bool operator<=(const Fixed &obj) const;
-		bool operator==(const Fixed &obj) const;
-		bool operator!=(const Fixed &obj) const;
-		Fixed operator+(const Fixed &obj) const;
-		Fixed operator-(const Fixed &obj) const;
-		Fixed operator*(const Fixed &obj) const;
-		Fixed operator/(const Fixed &obj) const;
-		Fixed &operator++();
-		Fixed operator++(int);
-		Fixed &operator--();
-		Fixed operator--(int);
-		static Fixed &min(Fixed &obj1, Fixed &obj2);
-		const static Fixed &min(const Fixed &obj1, const Fixed &obj2);
-		static Fixed &max(Fixed &obj1, Fixed &obj2);
-		const static Fixed &max(const Fixed &obj1, const Fixed &obj2);
-	private:
-		int fixedPointNum;
-		static const int numOfFractionalBits = 8;
+class Fixed
+{
+public:
+	Fixed();
+	Fixed(const Fixed &obj);
+	Fixed &operator=(const Fixed &obj);
+	Fixed(const int val);
+	Fixed(const float val);
+	~Fixed();
+	int getRawBits() const;
+	void setRawBits(int const raw);
+	float toFloat() const;
+	int toInt() const;
+	// 'friend' allows 'operator<<' to manipulate this class private members
+	friend std::ostream &operator<<(std::ostream &os, const Fixed &obj);
+	bool operator>(const Fixed &obj) const;
+	bool operator<(const Fixed &obj) const;
+	bool operator>=(const Fixed &obj) const;
+	bool operator<=(const Fixed &obj) const;
+	bool operator==(const Fixed &obj) const;
+	bool operator!=(const Fixed &obj) const;
+	Fixed operator+(const Fixed &obj) const;
+	Fixed operator-(const Fixed &obj) const;
+	Fixed operator*(const Fixed &obj) const;
+	Fixed operator/(const Fixed &obj) const;
+	Fixed &operator++();
+	Fixed operator++(int);
+	Fixed &operator--();
+	Fixed operator--(int);
+	static Fixed &min(Fixed &obj1, Fixed &obj2);
+	const static Fixed &min(const Fixed &obj1, const Fixed &obj2);
+	static Fixed &max(Fixed &obj1, Fixed &obj2);
+	const static Fixed &max(const Fixed &obj1, const Fixed &obj2);
+private:
+	int fixedPointNum;
+	static const int numOfFractionalBits = 8;
 };

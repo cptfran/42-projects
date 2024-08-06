@@ -1,6 +1,7 @@
 #include "Point.hpp"
 
-bool bsp(Point const a, Point const b, Point const c, Point const point) {
+bool bsp(Point const a, Point const b, Point const c, Point const point)
+{
 	// vector product (cross product):
 	// The vector product, also known as the cross product, is a mathematical operation that takes two vectors and 
 	// produces another vector. It is often used to find the vector perpendicular to two given vectors
@@ -21,7 +22,9 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	// Area = 0.5 * ||ab x ac||
 	Fixed areaABC(productABC / 2);
 	if (areaABC < 0)
+	{
 		areaABC = areaABC * -1;
+	}
 
 	// TRIANGLE abp AREA:
 	// Vector ab = b - a (vectorABX, vectorABY)
@@ -37,7 +40,9 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	// Area = 0.5 * ||ab x ap||
 	Fixed areaABP(productABP / 2);
 	if (areaABP < 0)
+	{
 		areaABP = areaABP * -1;
+	}
 
 	// TRIANGLE acp
 	// Vector product ac x ap = ac.x * ap.y - ac.y * ap.x
@@ -47,7 +52,9 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	// Area = 0.5 * ||ac x ap|
 	Fixed areaACP(productACP / 2);
 	if (areaACP < 0)
+	{
 		areaACP = areaACP * -1;
+	}
 
 	// TRIANGLE bcp
 	// Vector bc = c - b
@@ -65,15 +72,21 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	// Area = 0.5 * ||bc x bp|
 	Fixed areaBCP(productBCP / 2);
 	if (areaBCP < 0)
+	{
 		areaBCP = areaBCP * -1;
-	
+	}
+
 	// If any of the products of small triangles equals 0, then the point is on the edge
 	if (productABP == 0 || productACP == 0 || productBCP == 0)
+	{
 		return false;
+	}
 
 	// If area of a whole triangle is equal to a sum of areas of smaller triangles,
 	// the point is inside the triangle
 	if (areaABC == areaABP + areaACP + areaBCP)
+	{
 		return true;
+	}
 	return false;
 }

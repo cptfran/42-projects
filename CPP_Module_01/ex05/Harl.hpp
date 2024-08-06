@@ -17,13 +17,14 @@
 
 #define MSG_CHOOSE GRAY "Choose level ('DEBUG', 'INFO', 'WARNING', 'ERROR')" RESET
 
-class Harl {
-	public:
-		void complain(std::string level);
-	private:
-		typedef void (Harl::*funcHarl)();
-		void debug();
-		void info();
-		void warning();
-		void error();
+class Harl
+{
+public:
+	void complain(std::string level);
+private:
+	typedef void (Harl::*funcHarl)();
+	void debug();
+	void info();
+	void warning();
+	void error();
 };

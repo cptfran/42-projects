@@ -3,7 +3,8 @@
 
 # include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : public ClapTrap
+{
 public:
     FragTrap();
     FragTrap(const std::string& name);

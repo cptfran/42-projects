@@ -2,7 +2,8 @@
 # define CLAPTRAP_HPP
 # include <iostream>
 
-class ClapTrap {
+class ClapTrap
+{
 public:
 	ClapTrap();
 	ClapTrap(const std::string& name);

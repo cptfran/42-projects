@@ -1,6 +1,7 @@
 #include "Point.hpp"
 
-int main() {
+int main()
+ {
 	{
 		Point a(0,0);
 		Point b(10,0);
