@@ -7,11 +7,13 @@ ScalarConverter::ScalarConverter() {}
 
 ScalarConverter::~ScalarConverter() {}
 
-void ScalarConverter::convert(const std::string& val) {
+void ScalarConverter::convert(const std::string& val)
+{
 //      1 - type is char, 2 - type is int, 3 - type is float, 4 - type is double, -1 - not printable char,
 //      2 - out of range or not handled char
     int type = verifyType(val);
-    switch (type) {
+    switch (type)
+    {
         case 1:
             printFromChar(val[0]);
             break;

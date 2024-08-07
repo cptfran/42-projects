@@ -18,16 +18,19 @@
 // It may not be available in all C++ implementations.
 
 template <typename T>
-class MutantStack : public std::stack<T> {
+class MutantStack : public std::stack<T>
+{
 public:
     // Define a type 'iterator' that is the same as the iterator type of the underlying container used by std::stack<T>
     typedef typename std::stack<T>::container_type::iterator  iterator;
     // Function that returns an iterator pointing to the beginning of the underlying container
-    iterator begin() {
+    iterator begin()
+    {
         return this->c.begin();
     }
     // Function that returns an iterator pointing to the end of the underlying container
-    iterator end() {
+    iterator end()
+    {
         return this->c.end();
     }
 };

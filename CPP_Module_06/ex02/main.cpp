@@ -4,7 +4,8 @@
 #include <cstdlib>
 #include <iostream>
 
-int main() {
+int main()
+{
     std::srand(std::time(0));
     Base* randomObj = generate();
     std::cout << LIGHT_GREEN "Identyfing as pointer (void identify(Base* p))" RESET << std::endl;

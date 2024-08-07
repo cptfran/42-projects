@@ -8,9 +8,11 @@
 
 Base::~Base() {}
 
-Base* generate() {
+Base* generate()
+{
     int rollTheDice = std::rand() % 3;
-    switch (rollTheDice) {
+    switch (rollTheDice)
+    {
         case 0:
             return new A;
         case 1:
@@ -23,31 +25,49 @@ Base* generate() {
     }
 }
 // dynamic cast tries to convert to pointer type A, B or C, if succeds, returns pointer to p, if no returns null
-void identify(Base* p) {
-    if (dynamic_cast<A*>(p)) {
+void identify(Base* p)
+{
+    if (dynamic_cast<A*>(p))
+    {
         std::cout << "A" << std::endl;
-    } else if (dynamic_cast<B*>(p)) {
+    }
+    else if (dynamic_cast<B*>(p))
+    {
         std::cout << "B" << std::endl;
-    } else if (dynamic_cast<C*>(p)) {
+    }
+    else if (dynamic_cast<C*>(p))
+    {
         std::cout << "C" << std::endl;
-    } else {
+    }
+    else
+    {
         std::cerr << RED "Verification error" RESET << std::endl;
     }
 }
 
-void identify(Base& p) {
-    try {
+void identify(Base& p)
+{
+    try
+    {
         (void)dynamic_cast<A&>(p);
         std::cout << "A" << std::endl;
-    } catch (std::exception&) {
-        try {
+    }
+    catch (std::exception&)
+    {
+        try
+        {
             (void)dynamic_cast<B&>(p);
             std::cout << "B" << std::endl;
-        } catch (std::exception&) {
-            try {
+        }
+        catch (std::exception&)
+        {
+            try
+            {
                 (void)dynamic_cast<C&>(p);
                 std::cout << "C" << std::endl;
-            } catch (std::exception&) {
+            }
+            catch (std::exception&)
+            {
                 std::cerr << RED "Verification error" RESET << std::endl;
             }
         }
