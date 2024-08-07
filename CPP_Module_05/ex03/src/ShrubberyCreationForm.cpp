@@ -11,8 +11,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &form) : AForm(form) {}
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &form) {
-    if (this != &form) {
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &form)
+{
+    if (this != &form)
+    {
         AForm::operator=(form);
     }
     return *this;
@@ -20,9 +22,11 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-void ShrubberyCreationForm::createShrubberyFile() const {
+void ShrubberyCreationForm::createShrubberyFile() const
+{
     std::ofstream outfile((this->getTarget() + "_shrubbery").c_str());
-    if (!outfile) {
+    if (!outfile)
+    {
         std::cerr << RED "Error: could not open and write to file" RESET << std::endl;
         return;
     }
@@ -30,6 +34,7 @@ void ShrubberyCreationForm::createShrubberyFile() const {
     outfile.close();
 }
 
-void ShrubberyCreationForm::executeAction() const {
+void ShrubberyCreationForm::executeAction() const
+{
     this->createShrubberyFile();
 }

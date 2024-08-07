@@ -2,7 +2,8 @@
 #define AANIMAL_HPP
 #include <string>
 
-class AAnimal {
+class AAnimal
+{
 public:
     AAnimal();
     AAnimal(const AAnimal& obj);

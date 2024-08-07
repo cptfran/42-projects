@@ -2,12 +2,15 @@
 
 Fixed::Fixed() : fixedPointNum(0) {}
 
-Fixed::Fixed(const Fixed &obj) {
+Fixed::Fixed(const Fixed &obj)
+{
 	Fixed::operator=(obj);
 }
 
-Fixed &Fixed::operator=(const Fixed &obj) {
-	if (this != &obj) {
+Fixed &Fixed::operator=(const Fixed &obj)
+{
+	if (this != &obj)
+	{
 		fixedPointNum = obj.fixedPointNum;
 	}
 	return *this;
@@ -15,53 +18,95 @@ Fixed &Fixed::operator=(const Fixed &obj) {
 
 Fixed::~Fixed() {}
 
-int Fixed::getRawBits() const { return fixedPointNum; }
+int Fixed::getRawBits() const
+{
+	return fixedPointNum;
+}
 
-void Fixed::setRawBits(int const raw) { fixedPointNum = raw; }
+void Fixed::setRawBits(int const raw)
+{
+	fixedPointNum = raw;
+}
 
 Fixed::Fixed(const int val) : fixedPointNum(val << numOfFractionalBits) {}
 
-Fixed::Fixed(const float val) {
+Fixed::Fixed(const float val)
+{
 	fixedPointNum = roundf(val * (1 << numOfFractionalBits)); // round to val * (move 8bits left -> equals 2^8 -> equals 256 -> move the comma)
 }
 
-float Fixed::toFloat() const { return (float)fixedPointNum / (1 << numOfFractionalBits); }
+float Fixed::toFloat() const
+{
+	return (float)fixedPointNum / (1 << numOfFractionalBits);
+}
 
-int Fixed::toInt() const { return fixedPointNum >> numOfFractionalBits; }
+int Fixed::toInt() const
+{
+	return fixedPointNum >> numOfFractionalBits;
+}
 
 // set output stream for this object, by default output stream cannot handle objects, setting the stream to output obj value converted to float
-std::ostream &operator<<(std::ostream &os, const Fixed &obj) {
+std::ostream &operator<<(std::ostream &os, const Fixed &obj)
+{
 	os << obj.toFloat();
 	return os;
 }
 
-bool Fixed::operator>(const Fixed &obj) const { return fixedPointNum > obj.fixedPointNum; }
-bool Fixed::operator<(const Fixed &obj) const { return fixedPointNum < obj.fixedPointNum; }
-bool Fixed::operator>=(const Fixed &obj) const { return fixedPointNum >= obj.fixedPointNum; }
-bool Fixed::operator<=(const Fixed &obj) const { return fixedPointNum <= obj.fixedPointNum; }
-bool Fixed::operator==(const Fixed &obj) const { return fixedPointNum == obj.fixedPointNum; }
-bool Fixed::operator!=(const Fixed &obj) const { return fixedPointNum != obj.fixedPointNum; }
+bool Fixed::operator>(const Fixed &obj) const
+{
+	return fixedPointNum > obj.fixedPointNum;
+}
 
-Fixed Fixed::operator+(const Fixed &obj) const {
+bool Fixed::operator<(const Fixed &obj) const
+{
+	return fixedPointNum < obj.fixedPointNum;
+}
+
+bool Fixed::operator>=(const Fixed &obj) const
+{
+	return fixedPointNum >= obj.fixedPointNum;
+}
+
+bool Fixed::operator<=(const Fixed &obj) const
+{
+	return fixedPointNum <= obj.fixedPointNum;
+}
+
+bool Fixed::operator==(const Fixed &obj) const
+{
+	return fixedPointNum == obj.fixedPointNum;
+}
+
+bool Fixed::operator!=(const Fixed &obj) const
+{
+	return fixedPointNum != obj.fixedPointNum;
+}
+
+Fixed Fixed::operator+(const Fixed &obj) const
+{
 	Fixed newObj;
 	newObj.fixedPointNum = fixedPointNum + obj.fixedPointNum;
 	return newObj;
 }
 
-Fixed Fixed::operator-(const Fixed &obj) const {
+Fixed Fixed::operator-(const Fixed &obj) const
+{
 	Fixed newObj;
 	newObj.fixedPointNum = fixedPointNum - obj.fixedPointNum;
 	return newObj;
 }
 
-Fixed Fixed::operator*(const Fixed &obj) const {
+Fixed Fixed::operator*(const Fixed &obj) const
+{
 	Fixed newObj;
 	newObj.fixedPointNum = (fixedPointNum * obj.fixedPointNum) >> numOfFractionalBits;
 	return newObj;
 }
 
-Fixed Fixed::operator/(const Fixed &obj) const {
-	if (obj.fixedPointNum == 0) {
+Fixed Fixed::operator/(const Fixed &obj) const
+{
+	if (obj.fixedPointNum == 0)
+	{
 		std::cerr << ERR_DIV_BY_ZERO << std::endl;
 		return 0;
 	}

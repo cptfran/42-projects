@@ -1,77 +1,26 @@
-#include <iostream>
-#include <iomanip>
-#include "colors.h"
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
-class Contact {
-	public:
-		void	setContact() {
-				std::cout << std::endl;
-				std::string	input;
-				while (!isCorrectField(input, "Enter first name"))
-					continue ;
-				setFirstName(input);
-				while (!isCorrectField(input, "Enter last name"))
-					continue ;
-				setLastName(input);
-				while (!isCorrectField(input, "Enter nickname"))
-					continue ;
-				setNickname(input);
-				while (!isCorrectField(input, "Enter phone number"))
-					continue ;
-				setPhoneNumber(input);
-				while (!isCorrectField(input, "Enter your darkest secret"))
-					continue ;
-				setDarkestSecret(input);
-		}
-		void	printStartContactInfo(const int i) {
-			std::cout << std::setw(10) << std::right << std::setfill(' ') << i << GRAY << '|' << RESET
-				<< std::setw(10) << std::right << std::setfill(' ') << truncateString(firstName) << GRAY << '|' << RESET
-				<< std::setw(10) << std::right << std::setfill(' ') << truncateString(lastName) << GRAY << '|' << RESET
-				<< std::setw(10) << std::right << std::setfill(' ') << truncateString(nickname) << RESET << std::endl;
-		}
-		void	printAllContactInfo() {
-			std::cout << "\n" << GRAY << "FIRST NAME: " << RESET << firstName << "\n" << GRAY << "LAST NAME: "
-				<< RESET << lastName << "\n" << GRAY << "NICKNAME: " << RESET << nickname << "\n" << GRAY
-				<< "PHONE NUMBER: " << RESET << phoneNumber << "\n" << GRAY << "DARKEST SECRET: " << RESET
-				<< darkestSecret << "\n" << std::endl;
-		}
-	private:
-		std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
-		void	setFirstName(const std::string& name) { firstName = name; }
-		void	setLastName(const std::string& name) { lastName = name; }
-		void	setNickname(const std::string& name) { nickname = name; }
-		void	setPhoneNumber(std::string& number) {
-			while (!isDigitStr(number)) {
-				std::cout << RED << "\nUSE ONLY DIGITS\n" << RESET << std::endl;
-				std::cout << GRAY << "Enter phone number: "<< RESET;
-				std::getline(std::cin, number);
-			}
-			phoneNumber = number;
-		}
-		void	setDarkestSecret(const std::string& secret) { darkestSecret  = secret; }
-		bool	isDigitStr(const std::string& str) {
-			for (std::string::const_iterator i = str.begin(); i != str.end(); i++) {
-				if (!isdigit(*i))
-					return false;
-			}
-			return true;
-		}
-		std::string	truncateString(std::string str) {
-			if (str.length() >= 10)
-				return str.substr(0, 9) + ".";
-			else
-				return str;
-		}
-		bool	isCorrectField(std::string& input, std::string input_msg) {
-			std::cout << GRAY << input_msg << ": "<< RESET;
-			std::getline(std::cin, input);
-			if (input.find(' ') != std::string::npos) {
-				std::cout << RED << "\nSPACES NOT ALLOWED\n" << RESET << std::endl;
-				return false;
-			} else if (input.empty()) {
-				std::cout << RED << "\nFIELD CANNOT BE EMPTY\n" << RESET << std::endl;
-				return false;
-			}
-			return true;
-		}
+#include <iostream>
+#include <string>
+
+class Contact
+{
+public:
+	void setContact();
+	void printStartContactInfo(int i);
+	void printAllContactInfo();
+
+private:
+	std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
+	void setFirstName(const std::string& name);
+	void setLastName(const std::string& name);
+	void setNickname(const std::string& name);
+	void setPhoneNumber(std::string& number);
+	void setDarkestSecret(const std::string& secret);
+	bool isDigitStr(const std::string& str);
+	std::string truncateString(std::string str);
+	bool isCorrectField(std::string& input, std::string input_msg);
 };
+
+#endif // CONTACT_HPP

@@ -4,7 +4,8 @@
 #include "Msg.hpp"
 #include <iostream>
 
-int main() {
+int main()
+{
     // AAnimal test;
     Dog test2;
     Cat test3;

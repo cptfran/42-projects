@@ -12,13 +12,14 @@
 # define GRAY "\033[90m"
 # define RESET "\033[0m"
 
-class Zombie {
-	public:
-		Zombie(std::string name);
-		~Zombie();
-	private:
-		std::string name;
-		void announce();
+class Zombie
+{
+public:
+	Zombie(std::string name);
+	~Zombie();
+private:
+	std::string name;
+	void announce();
 };
 
 Zombie*	newZombie(std::string name);

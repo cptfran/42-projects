@@ -2,7 +2,8 @@
 #define ANIMAL_HPP
 #include <string>
 
-class Animal {
+class Animal
+{
 public:
     Animal();
     Animal(const Animal& obj);

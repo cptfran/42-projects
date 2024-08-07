@@ -9,7 +9,8 @@
 # define GRAY "\033[90m"
 # define RESET "\033[0m"
 
-class ClapTrap {
+class ClapTrap
+{
 public:
 	ClapTrap();
 	ClapTrap(const std::string& name);

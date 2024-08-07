@@ -15,13 +15,14 @@
 
 #define ERR_PARSER_INPUT RED "Error: run program with argument: <./harlFilter> <arg>" RESET
 
-class Harl {
-	public:
-		void complainFilter(std::string level);
-	private:
-		typedef void (Harl::*funcHarl)();
-		void debug();
-		void info();
-		void warning();
-		void error();
+class Harl
+{
+public:
+	void complainFilter(std::string level);
+private:
+	typedef void (Harl::*funcHarl)();
+	void debug();
+	void info();
+	void warning();
+	void error();
 };
