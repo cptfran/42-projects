@@ -1,7 +1,8 @@
 #include <iostream>
 #include "Serializer.hpp"
 
-int main() {
+int main()
+{
     Data values;
     values.dVal = 2;
     std::cout << values.dVal << std::endl;

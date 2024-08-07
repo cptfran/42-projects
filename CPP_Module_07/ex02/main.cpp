@@ -1,7 +1,8 @@
 #include <iostream>
 #include "Array.hpp"
 
-int main() {
+int main()
+{
     // Test default constructor
     Array<int> a;
     std::cout << "Size of a: " << a.size() << std::endl;
@@ -11,7 +12,8 @@ int main() {
     std::cout << "Size of b: " << b.size() << std::endl;
 
     // Test operator[]
-    for (unsigned int i = 0; i < b.size(); i++) {
+    for (unsigned int i = 0; i < b.size(); i++)
+    {
         b[i] = i;
     }
 
@@ -24,16 +26,19 @@ int main() {
     std::cout << "Size of a: " << a.size() << std::endl;
 
     // Test values
-    for (unsigned int i = 0; i < a.size(); i++) {
+    for (unsigned int i = 0; i < a.size(); i++)
+    {
         std::cout << "a[" << i << "] = " << a[i] << std::endl;
     }
 
     // Test exception
-    try {
+    try
+    {
         std::cout << "a[10] = " << a[10] << std::endl;
-    } catch (std::exception& e) {
+    }
+    catch (std::exception& e)
+    {
         std::cout << "Caught exception: " << e.what() << std::endl;
     }
-
     return 0;
 }
