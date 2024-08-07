@@ -3,7 +3,8 @@
 #include "MutantStack.hpp"
 #include "Colors.hpp"
 
-int main() {
+int main()
+{
 
     std::cout << LIGHT_GREEN "\nMutant stack:" RESET << std::endl;
     MutantStack<int> mstack;

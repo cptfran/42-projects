@@ -3,13 +3,15 @@
 
 #include <cstdint>
 
-struct Data {
+struct Data
+{
     int iVal;
     float fVal;
     double dVal;
 };
 
-class Serializer {
+class Serializer
+{
 public:
     static uintptr_t serialize(Data* ptr);
     static Data* deserialize(uintptr_t raw);

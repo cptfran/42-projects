@@ -5,9 +5,11 @@
 // typename is required, because 'T::iterator' depends on type T, so compiler needs to know that T::iterator is a type
 // and not a static member
 template <typename T>
-typename T::iterator easyfind(T& container, int toFind) {
+typename T::iterator easyfind(T& container, int toFind)
+{
     typename T::iterator it = std::find(container.begin(), container.end(), toFind);
-    if (it == container.end()) {
+    if (it == container.end())
+    {
         throw std::exception();
     }
     return it;
