@@ -1,6 +1,19 @@
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
+#include <fstream>
+#include <map>
 
-std::map<std::string, double> init_data_as_map_container_from_file(std::ifstream& file);
+class BitcoinExchange
+{
+public:
+    BitcoinExchange();
+    BitcoinExchange(const BitcoinExchange& toCopy);
+    BitcoinExchange& operator=(const BitcoinExchange& toCopy);
+    ~BitcoinExchange();
+    int setExchangeData(const std::string& fileName);
+    int printExchangedValues(const std::string& fileName);
+private:
+    std::map<std::string, double> exchangeData;
+};
 
 #endif
