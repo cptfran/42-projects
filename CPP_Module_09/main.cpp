@@ -14,5 +14,13 @@ int main(int argc, char **argv)
         return 2;
     }
     BitcoinExchange btcExchange;
+	try
+	{
+		btcExchange.printExchangedValues(argv[1]);
+	}
+	catch (const std::runtime_error& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
     return 0;
 }
