@@ -10,8 +10,10 @@ public:
     BitcoinExchange(const BitcoinExchange& toCopy);
     BitcoinExchange& operator=(const BitcoinExchange& toCopy);
     ~BitcoinExchange();
-    int setExchangeData(const std::string& fileName);
-    int printExchangedValues(const std::string& fileName);
+    void printExchangedValues(const char* fileName);
+	void assignDateAndValue(std::string& inputLine, std::string& inputDate, float& inputValue);
+	bool isDateValid(std::string& inputDate);
+	bool isLeapYear(long year);
 private:
     std::map<std::string, double> exchangeData;
 };
