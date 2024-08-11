@@ -11,9 +11,9 @@ public:
     BitcoinExchange& operator=(const BitcoinExchange& toCopy);
     ~BitcoinExchange();
     void printExchangedValues(const char* fileName);
-	void assignDateAndValue(std::string& inputLine, std::string& inputDate, float& inputValue);
-	bool isDateValid(std::string& inputDate);
-	bool isLeapYear(long year);
+	static void assignDateAndValue(std::string& inputLine, std::string& inputDate, float& inputValue);
+	static bool isDateValid(const std::string& inputDate);
+	static bool isLeapYear(long year);
 private:
     std::map<std::string, float> exchangeData;
 };
