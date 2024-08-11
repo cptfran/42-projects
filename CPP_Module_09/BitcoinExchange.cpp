@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include "Colors.hpp"
 #include <iostream>
 #include <fstream>
 #include <map>
@@ -19,11 +20,9 @@ BitcoinExchange::BitcoinExchange()
 		if (commaPosition != std::string::npos)
 		{
 			this->exchangeData[line.substr(0, commaPosition)]
-				= strtod(line.substr(commaPosition + 1).c_str(), NULL);
+				= strtof(line.substr(commaPosition + 1).c_str(), NULL);
 		}
 	}
-	std::cout << "printing data" << std::endl;
-	
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& toCopy) : exchangeData(toCopy.exchangeData) {}
@@ -55,7 +54,32 @@ void BitcoinExchange::printExchangedValues(const char* fileName)
     {
 		std::string inputDate;
 		float inputValue;
-		this->assignDateAndValue(inputLine, inputDate, inputValue);
+		try
+		{
+			this->assignDateAndValue(inputLine, inputDate, inputValue);
+		}
+		catch (const std::invalid_argument& e)
+		{
+			std::cerr << RED << e.what() << RESET << std::endl;
+		}
+		float exchangedValue = -1;
+		for (std::map<std::string, float>::iterator iData = this->exchangeData.begin();
+			iData != this->exchangeData.end(); ++iData)
+		{
+			if (iData->first > inputDate)
+			{
+				if (exchangedValue > -1)
+				{
+					std::cout << inputDate << " => " << inputValue << " = " << exchangedValue << std::endl;
+				}
+				else
+				{
+					throw std::invalid_argument("Error: matching date not found");
+				}
+				break;
+			}
+			exchangedValue = inputValue * iData->second;
+		}
     }
 }
 
@@ -67,33 +91,51 @@ void BitcoinExchange::assignDateAndValue(std::string& inputLine, std::string& in
 		throw std::invalid_argument("Error: '|' separator missing");
 	}
 	inputDate = inputLine.substr(0, pipePosition);
-	for (size_t i = 0; i < inputDate.size(); ++i)
+	if (!isDateValid(inputDate))
 	{
-		if (((i == 4 || i == 7) && inputDate[i] != '-') || (i != 4 && i != 7 && !isdigit(inputDate[i]))
-		    || std::atoi(inputDate.substr(0, 4).c_str()) > 2024
-		    || std::atoi(inputDate.substr(5, 7).c_str()))
-		{
-			throw std::invalid_argument("Error: wrong date format");
-		}
+		throw std::invalid_argument("Error: wrong date format");
 	}
 	char* end;
 	inputValue = strtof(inputLine.substr(pipePosition + 1).c_str(), &end);
-	if (*end != 0 || inputValue < 0 || inputValue > 1000)
+	if (*end != 0 || inputValue < 0)
 	{
-		throw std::invalid_argument("Error: value not valid");
+		throw std::invalid_argument("Error: number not valid");
+	}
+	if (inputValue > 1000)
+	{
+		throw std::invalid_argument("Error: number too large");
 	}
 }
 
 bool BitcoinExchange::isDateValid(std::string &inputDate)
 {
+	for (size_t i = 0; i < inputDate.size(); ++i)
+	{
+		if (((i == 4 || i == 7) && inputDate[i] != '-') || (i != 4 && i != 7 && !isdigit(inputDate[i])))
+		{
+			return false;
+		}
+	}
 	char *end;
-	long year = std::strtol(inputDate.substr(0, 4).c_str(), &end, 10);
+	const long year = std::strtol(inputDate.substr(0, 4).c_str(), &end, 10);
 	if (*end != 0 || year < 0 || year > 2024)
 	{
 		return false;
 	}
-	long month = std::strtol(inputDate.substr(5, 7).c_str(), &end, 10);
-	if (*end != 0 || ())
+	const long month = std::strtol(inputDate.substr(5, 2).c_str(), &end, 10);
+	if (*end != 0 || month < 1 || month > 12)
+	{
+		return false;
+	}
+	const long day = std::strtol(inputDate.substr(8, 2).c_str(), &end, 10);
+	if (*end != 0 || day < 1 || (this->isLeapYear(year) && month == 2 && day > 29)
+		|| (!this->isLeapYear(year) && month == 2 && day > 28)
+		|| ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+		|| ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+		&& day > 31))
+	{
+		return false;
+	}
 	return true;
 }
 
