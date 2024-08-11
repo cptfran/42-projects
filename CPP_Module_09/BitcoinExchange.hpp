@@ -15,7 +15,7 @@ public:
 	bool isDateValid(std::string& inputDate);
 	bool isLeapYear(long year);
 private:
-    std::map<std::string, double> exchangeData;
+    std::map<std::string, float> exchangeData;
 };
 
 #endif

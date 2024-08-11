@@ -22,5 +22,9 @@ int main(int argc, char **argv)
 	{
 		std::cerr << RED << e.what() << RESET << std::endl;
 	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
     return 0;
 }
