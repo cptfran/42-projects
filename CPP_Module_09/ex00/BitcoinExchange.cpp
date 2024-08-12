@@ -25,7 +25,10 @@ BitcoinExchange::BitcoinExchange()
 	}
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& toCopy) : exchangeData(toCopy.exchangeData) {}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& toCopy) : exchangeData(toCopy.exchangeData)
+{
+
+}
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& toCopy)
 {
@@ -64,8 +67,15 @@ void BitcoinExchange::printExchangedValues(const char* fileName)
 			{
 				if (iData->first > inputDate || iData == lastIData)
 				{
-					std::cout << BLUE << inputDate << GRAY "=> " << BLUE << inputValue << GRAY " = " LIGHT_GREEN
-							<< exchangedValue << RESET << std::endl;
+					if (exchangedValue > -1)
+					{
+						std::cout << BLUE << inputDate << GRAY " => " BLUE << inputValue << GRAY " = " LIGHT_GREEN
+								<< exchangedValue << RESET << std::endl;
+					}
+					else
+					{
+						std::cerr << RED "Date too old for the database" RESET << std::endl;
+					}
 					break;
 				}
 				exchangedValue = inputValue * iData->second;
