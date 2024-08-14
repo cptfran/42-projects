@@ -1,0 +1,35 @@
+
+STEP 1: group the elements of x into [n/2] pairs of elements
+"You start by grouping the elements into ([n/2]) pairs. If there's an odd number of elements, one element will remain
+unpaired."
+
+STEP 2: determine the larger of the two elements in each pair
+"For each pair, determine which element is larger and which is smaller."
+
+STEP 3: Recursively sort the [n/2] larger elements form each pair
+"Recursively sort the larger elements from each pair. This forms the initial "main chain" or sequence."
+
+STEP 4: Create the main chain and pend
+"This step involves inserting the smaller elements (from the initial pairs) into the sequence formed by the larger
+elements. The insertion is done to maintain the sorted order. The method of insertion is where the algorithm gets more
+complex and involves using previously determined positions to minimize comparisons."
+
+STEP 5: Generate the order of insertion use jacobsthal squence
+"The Jacobsthal sequence (or a similar method) can be used to optimize the order of insertion for the smaller elements.
+However, this is not a universally described step in all explanations of the Ford-Johnson algorithm. The key idea is to
+minimize the number of comparisons needed to insert the remaining elements into the sorted sequence."
+
+STEP 6: insert the lements of the pend into the main chain
+"The remaining elements (the smaller ones from the initial pairs) are inserted into the sorted sequence of larger
+elements. The insertion should maintain the sorted order, and the goal is to do this with the minimum number of
+comparisons."
+
+Additional Clarifications:
+"Main Chain and Pend: The terms "main chain" and "pend" are not universally used in descriptions of the Ford-Johnson
+algorithm. Typically, the algorithm is described in terms of sorting a subset of elements (the larger ones from each
+pair) and then efficiently inserting the remaining elements into this sorted subset."
+
+Optimization Goal:
+"The Ford-Johnson algorithm aims to reduce the total number of comparisons needed to sort a list, making it more
+efficient than straightforward comparison-based sorting algorithms, especially for lists where comparisons are
+expensive."
