@@ -33,3 +33,11 @@ Optimization Goal:
 "The Ford-Johnson algorithm aims to reduce the total number of comparisons needed to sort a list, making it more
 efficient than straightforward comparison-based sorting algorithms, especially for lists where comparisons are
 expensive."
+
+ if constexpr (std::is_same<ContainerBasic, std::vector<int>>::value) {
+            std::cout << "Container is a std::vector<int>.\n";
+        } else if constexpr (std::is_same<ContainerBasic, std::deque<int>>::value) {
+            std::cout << "Container is a std::deque<int>.\n";
+        } else {
+            std::cout << "Container is of an unknown type.\n";
+        }

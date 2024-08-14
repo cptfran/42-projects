@@ -2,10 +2,14 @@
 #define PMERGME_HPP
 #include <cstddef>
 
-// vector
-// deque
+#define VECTOR
+#define DEQUE
+#define OTHER
 
-template <typename Container>
+
+
+// template class to allow using alghoritm with both std::vector and std::deque
+template <typename ContainerBasic, typename ContainerPair>
 class PmergeMe
 {
 public:
@@ -16,7 +20,10 @@ public:
 	~PmergeMe();
 	void mergeInsertionSort();
 private:
-	Container numsPairs;
+	ContainerBasic nums;
+	ContainerPair numsPairs;
 };
+
+#include "PmergeMe.tpp"
 
 #endif

@@ -1,8 +1,8 @@
+#include "Colors.hpp"
+#include "PmergeMe.hpp"
 #include <iostream>
 #include <vector>
 #include <deque>
-#include "Colors.hpp"
-#include "PmergeMe.hpp"
 
 int main(int argc, char **argv)
 {
@@ -12,7 +12,18 @@ int main(int argc, char **argv)
 			<< std::endl;
 		return 2;
 	}
-	PmergeMe<std::vector<int> > vecSort(argc, argv);
-	
-	PmergeMe<std::deque<int> > deqSort(argc, argv);
+	try
+	{
+		std::cout << LIGHT_CYAN "vector:" RESET << std::endl;
+		PmergeMe<std::vector<int>, std::vector<std::pair<int, int> > > vecSort(argc, argv);
+		vecSort.mergeInsertionSort();
+		std::cout << LIGHT_CYAN "\ndeque:" RESET << std::endl;
+		PmergeMe<std::deque<int>, std::deque<std::pair<int, int> > > deqSort(argc, argv);
+		deqSort.mergeInsertionSort();
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cerr << RED << e.what() << std::endl;
+	}
+	return 0;
 }

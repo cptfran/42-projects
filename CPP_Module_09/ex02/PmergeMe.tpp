@@ -3,19 +3,18 @@
 #include <cerrno>
 #include <climits>
 #include <vector>
-#include "PmergeMe.hpp"
+#include <iostream>
 
-template <typename Container>
-PmergeMe<Container>::PmergeMe()
+template <typename ContainerBasic, typename ContainerPair>
+PmergeMe<ContainerBasic, ContainerPair>::PmergeMe()
 {
 
 }
 
-template <typename Container>
-PmergeMe<Container>::PmergeMe(int argc, char **argv)
+template <typename ContainerBasic, typename ContainerPair>
+PmergeMe<ContainerBasic, ContainerPair>::PmergeMe(int argc, char **argv)
 {
-	std::vector<int> tmp;
-	for (size_t i = 1; i < argc; ++i)
+	for (int i = 1; i < argc; ++i)
 	{
 		errno = 0;
 		char *endPtr;
@@ -28,22 +27,22 @@ PmergeMe<Container>::PmergeMe(int argc, char **argv)
 		{
 			throw std::invalid_argument("Error: not a positive integer");
 		}
-		tmp.push_back(static_cast<int>(num));
+		nums.push_back(static_cast<int>(num));
 	}
-	for (size_t i = 0; i + 1 < tmp.size(); i += 2)
+	for (size_t i = 0; i + 1 < this->nums.size(); i += 2)
 	{
-		numsPairs.emplace_back(tmp[i], tmp[i + 1]);
+		this->numsPairs.push_back(std::make_pair(this->nums[i], this->nums[i + 1]));
 	}
 }
 
-template <typename Container>
-PmergeMe<Container>::PmergeMe(const PmergeMe<Container>& toCopy) : numsPairs(toCopy.numsPairs)
+template <typename ContainerBasic, typename ContainerPair>
+PmergeMe<ContainerBasic, ContainerPair>::PmergeMe(const PmergeMe<ContainerBasic, ContainerPair>& toCopy) : numsPairs(toCopy.numsPairs)
 {
 
 }
 
-template <typename Container>
-PmergeMe<Container>& PmergeMe<Container>::operator=(const PmergeMe<Container>& toCopy)
+template <typename ContainerBasic, typename ContainerPair>
+PmergeMe<ContainerBasic, ContainerPair>& PmergeMe<ContainerBasic, ContainerPair>::operator=(const PmergeMe<ContainerBasic, ContainerPair>& toCopy)
 {
 	if (this != &toCopy)
 	{
@@ -52,19 +51,26 @@ PmergeMe<Container>& PmergeMe<Container>::operator=(const PmergeMe<Container>& t
 	return *this;
 }
 
-template <typename Container>
-PmergeMe<Container>::~PmergeMe()
+template <typename ContainerBasic, typename ContainerPair>
+PmergeMe<ContainerBasic, ContainerPair>::~PmergeMe()
 {
 
 }
 
-template <typename Container>
-void PmergeMe<Container>::mergeInsertionSort()
+template <typename ContainerBasic, typename ContainerPair>
+void PmergeMe<ContainerBasic, ContainerPair>::mergeInsertionSort()
 {
-// init pairs, if odd number of elements, for now leave the last element
-
 // "For each pair, determine which element is larger and which is smaller."
-
+	std::cout << GRAY "STEP 1 && STEP 2: group the elements of x into [n/2] pairs of elements determine the "
+							  "larger of the two elements in each pair" RESET << std::endl;
+	for (size_t i = 0; i < this->numsPairs.size(); ++i)
+	{
+		if (this->numsPairs[i].first < this->numsPairs[i].second)
+		{
+			std::swap(this->numsPairs[i].first, this->numsPairs[i].second);
+		}
+		std::cout << this->numsPairs[i].first << " " << this->numsPairs[i].second << std::endl;
+	}
 // "Recursively sort the larger elements from each pair. This forms the initial "main chain" or sequence."
 
 // "This step involves inserting the smaller elements (from the initial pairs) into the sequence formed by the
