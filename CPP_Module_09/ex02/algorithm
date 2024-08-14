@@ -7,7 +7,8 @@ STEP 2: determine the larger of the two elements in each pair
 "For each pair, determine which element is larger and which is smaller."
 
 STEP 3: Recursively sort the [n/2] larger elements form each pair
-"Recursively sort the larger elements from each pair. This forms the initial "main chain" or sequence."
+"This forms the initial "main chain" or sequence. Divide the list of larger elements into two halves.
+Recursively sort each half. Merge the two sorted halves into a single sorted sequence."
 
 STEP 4: Create the main chain and pend
 "This step involves inserting the smaller elements (from the initial pairs) into the sequence formed by the larger
@@ -19,7 +20,7 @@ STEP 5: Generate the order of insertion use jacobsthal squence
 However, this is not a universally described step in all explanations of the Ford-Johnson algorithm. The key idea is to
 minimize the number of comparisons needed to insert the remaining elements into the sorted sequence."
 
-STEP 6: insert the lements of the pend into the main chain
+STEP 6: insert the elements of the pend into the main chain
 "The remaining elements (the smaller ones from the initial pairs) are inserted into the sorted sequence of larger
 elements. The insertion should maintain the sorted order, and the goal is to do this with the minimum number of
 comparisons."
