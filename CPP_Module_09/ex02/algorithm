@@ -8,7 +8,15 @@ STEP 2: determine the larger of the two elements in each pair
 
 STEP 3: Recursively sort the [n/2] larger elements form each pair
 "This forms the initial "main chain" or sequence. Divide the list of larger elements into two halves.
-Recursively sort each half. Merge the two sorted halves into a single sorted sequence."
+Recursively sort each half. Merge the two sorted halves into a single sorted sequence.
+In the context of the Ford-Johnson algorithm, when you're sorting the pairs based on the larger numbers (which you've
+mentioned are already the first element of each pair), you should consider each pair as an indivisible unit during the
+sorting process. This means that when you sort the pairs based on the larger numbers (the first element of each pair),
+ you swap the whole pair as a unit, rather than just swapping the larger numbers within the pairs.
+
+This approach ensures that the relationship between the larger and smaller numbers within each pair is maintained
+throughout the sorting process. The "lower nums chain" or sequence of smaller numbers will indeed look different after
+the sorting, as it will reflect the order of the pairs determined by the sorting of the larger numbers"
 
 STEP 4: Create the main chain and pend
 "This step involves inserting the smaller elements (from the initial pairs) into the sequence formed by the larger
