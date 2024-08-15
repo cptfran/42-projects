@@ -14,12 +14,12 @@ int main(int argc, char **argv)
 	}
 	try
 	{
-		std::cout << LIGHT_CYAN "vector:" RESET << std::endl;
+		std::cout << LIGHT_CYAN "\nvector:" RESET << std::endl;
 		PmergeMe<std::vector<int>, std::vector<std::pair<int, int> > > vecSort(argc, argv);
-		vecSort.mergeInsertionSort();
+		vecSort.sortFordJohnson();
 		std::cout << LIGHT_CYAN "\ndeque:" RESET << std::endl;
 		PmergeMe<std::deque<int>, std::deque<std::pair<int, int> > > deqSort(argc, argv);
-		deqSort.mergeInsertionSort();
+		deqSort.sortFordJohnson();
 	}
 	catch (const std::invalid_argument& e)
 	{

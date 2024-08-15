@@ -7,12 +7,16 @@ STEP 2: determine the larger of the two elements in each pair
 "For each pair, determine which element is larger and which is smaller."
 
 STEP 3: Recursively sort the [n/2] larger elements form each pair
-"This forms the initial "main chain" or sequence. Divide the list of larger elements into two halves.
+"This forms the initial "main chain" or sequence. Divide the list of elements into two halves.
 Recursively sort each half. Merge the two sorted halves into a single sorted sequence.
 In the context of the Ford-Johnson algorithm, when you're sorting the pairs based on the larger numbers (which you've
 mentioned are already the first element of each pair), you should consider each pair as an indivisible unit during the
 sorting process. This means that when you sort the pairs based on the larger numbers (the first element of each pair),
- you swap the whole pair as a unit, rather than just swapping the larger numbers within the pairs.
+you swap the whole pair as a unit, rather than just swapping the larger numbers within the pairs."
+- Dividing the list into two halves.
+- Sorting the larger elements (from each pair formed by pairing elements from the two halves) recursively.
+- Merging these sorted elements into a "main chain" or sequence.
+- Inserting the remaining elements into this main chain, also using a recursive process.
 
 This approach ensures that the relationship between the larger and smaller numbers within each pair is maintained
 throughout the sorting process. The "lower nums chain" or sequence of smaller numbers will indeed look different after
@@ -23,7 +27,7 @@ STEP 4: Create the main chain and pend
 elements. The insertion is done to maintain the sorted order. The method of insertion is where the algorithm gets more
 complex and involves using previously determined positions to minimize comparisons."
 
-STEP 5: Generate the order of insertion use jacobsthal squence
+STEP 5: Generate the order of insertion use jacobsthal sequence
 "The Jacobsthal sequence (or a similar method) can be used to optimize the order of insertion for the smaller elements.
 However, this is not a universally described step in all explanations of the Ford-Johnson algorithm. The key idea is to
 minimize the number of comparisons needed to insert the remaining elements into the sorted sequence."
