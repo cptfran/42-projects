@@ -23,8 +23,9 @@ public:
 	void splitAndInsertionSort();
 	void recursiveInsertionSort(ContainerPair& list, int listSize);
 	void createMainAndLowerChain();
+	void initJacobsthalSequence(size_t n);
 private:
-	ContainerBasic nums, mainChain, lowerChain;
+	ContainerBasic nums, mainChain, lowerChain, jacobsthalSeq;
 	ContainerPair numsPairs, firstHalf, secondHalf;
 };
 

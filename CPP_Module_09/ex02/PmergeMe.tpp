@@ -74,9 +74,8 @@ void PmergeMe<ContainerBasic, ContainerPair>::sortFordJohnson()
 // algorithm gets more complex and involves using previously determined positions to minimize comparisons."
 	this->createMainAndLowerChain();
 	
-//	"The Jacobsthal sequence (or a similar method) can be used to optimize the order of insertion for the smaller
-//	elements. However, this is not a universally described step in all explanations of the Ford-Johnson algorithm. The
-//	key idea is to minimize the number of comparisons needed to insert the remaining elements into the sorted sequence."
+//	"Init Jacobsthal sequence that will help to insert remaining elements into the main chain"
+	this->initJacobsthalSequence(mainChain.size() + lowerChain.size());
 
 //	"The remaining elements (the smaller ones from the initial pairs) are inserted into the sorted sequence of larger
 //	elements. The insertion should maintain the sorted order, and the goal is to do this with the minimum number of
@@ -183,6 +182,29 @@ void PmergeMe<ContainerBasic, ContainerPair>::createMainAndLowerChain()
 	for (size_t k = 0; k < lowerChain.size(); ++k)
 	{
 		std::cout << lowerChain[k] << " ";
+	}
+	std::cout << std::endl;
+}
+
+template <typename ContainerBasic, typename ContainerPair>
+void PmergeMe<ContainerBasic, ContainerPair>::initJacobsthalSequence(size_t n)
+{
+	std::cout << GRAY "\nSTEP 5: Init Jacobsthal sequence that will help to insert remaining elements into the main "
+					  "chain" RESET << std::endl;
+	jacobsthalSeq.push_back(0);
+	if (n <= 1)
+	{
+		return;
+	}
+	jacobsthalSeq.push_back(1);
+	for (size_t i = 2; i < n; ++i)
+	{
+		jacobsthalSeq.push_back(jacobsthalSeq[i - 2] * 2 + jacobsthalSeq[i - 1]);
+	}
+	std::cout << "Jacobsthal sequence: ";
+	for (size_t i = 0; i < n; ++i)
+	{
+		std::cout << jacobsthalSeq[i] << " ";
 	}
 	std::cout << std::endl;
 }
