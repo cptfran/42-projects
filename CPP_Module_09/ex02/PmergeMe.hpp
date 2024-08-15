@@ -18,10 +18,15 @@ public:
 	PmergeMe(const PmergeMe& toCopy);
 	PmergeMe& operator=(const PmergeMe& toCopy);
 	~PmergeMe();
-	void mergeInsertionSort();
+	void sortFordJohnson();
+	void moveLargerInPairTop();
+	void splitAndInsertionSort();
+	void recursiveInsertionSort(ContainerPair& list, int listSize);
+	void createMainAndLowerChain();
+	void initJacobsthalSequence(size_t n);
 private:
-	ContainerBasic nums;
-	ContainerPair numsPairs;
+	ContainerBasic nums, mainChain, lowerChain, jacobsthalSeq;
+	ContainerPair numsPairs, firstHalf, secondHalf;
 };
 
 #include "PmergeMe.tpp"
