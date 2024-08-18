@@ -14,12 +14,45 @@ int main(int argc, char **argv)
 	}
 	try
 	{
-		std::cout << LIGHT_CYAN "\nvector:" RESET << std::endl;
+		// Vector sorting.
 		PmergeMe<std::vector<int>, std::vector<std::pair<int, int> > > vecSort(argc, argv);
+		vecSort.printNums();
+		clock_t start = clock();
 		vecSort.sortFordJohnson();
-		std::cout << LIGHT_CYAN "\ndeque:" RESET << std::endl;
+		clock_t end = clock();
+		vecSort.printSortedNums();
+		if (vecSort.sortedChecker())
+		{
+			std::cout << LIGHT_GREEN "\n\n:) :) :) SORTED :) :) :)" RESET << std::endl;
+		}
+		else
+		{
+			std::cerr << RED "!!! NOT SORTED !!!" RESET << std::endl;
+			return 3;
+		}
+		double elapsedTime = static_cast<double>(end - start) / 1000000.0 * CLOCKS_PER_SEC;
+		std::cout << "Time to process a range of " LIGHT_CYAN << argc - 1
+		          << " elements" RESET " with " BLUE "std::vector" RESET ": " << LIGHT_GREEN << elapsedTime
+				  << " microseconds." RESET << std::endl;
+		
+		// Deque sorting.
 		PmergeMe<std::deque<int>, std::deque<std::pair<int, int> > > deqSort(argc, argv);
+		start = clock();
 		deqSort.sortFordJohnson();
+		end = clock();
+		if (deqSort.sortedChecker())
+		{
+			std::cout << LIGHT_GREEN "\n:) :) :) SORTED :) :) :)" RESET << std::endl;
+		}
+		else
+		{
+			std::cerr << RED "!!! NOT SORTED !!!" RESET << std::endl;
+			return 4;
+		}
+		elapsedTime = static_cast<double>(end - start) / 1000000.0 * CLOCKS_PER_SEC;
+		std::cout << "Time to process a range of " LIGHT_CYAN << argc - 1
+		          << " elements" RESET " with " YELLOW "std::deque" RESET ": "
+				  << LIGHT_GREEN << elapsedTime << " microseconds." RESET << std::endl;
 	}
 	catch (const std::invalid_argument& e)
 	{

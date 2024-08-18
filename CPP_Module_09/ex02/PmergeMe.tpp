@@ -4,6 +4,7 @@
 #include <climits>
 #include <vector>
 #include <iostream>
+#include <limits>
 
 template <typename ContainerBasic, typename ContainerPair>
 PmergeMe<ContainerBasic, ContainerPair>::PmergeMe()
@@ -27,7 +28,7 @@ PmergeMe<ContainerBasic, ContainerPair>::PmergeMe(int argc, char **argv)
 		{
 			throw std::invalid_argument("Error: not a positive integer");
 		}
-		nums.push_back(static_cast<int>(num));
+		this->nums.push_back(static_cast<int>(num));
 	}
 	for (size_t i = 0; i + 1 < this->nums.size(); i += 2)
 	{
@@ -60,48 +61,64 @@ PmergeMe<ContainerBasic, ContainerPair>::~PmergeMe()
 }
 
 template <typename ContainerBasic, typename ContainerPair>
-void PmergeMe<ContainerBasic, ContainerPair>::sortFordJohnson()
+void PmergeMe<ContainerBasic, ContainerPair>::printNums()
 {
-// "For each pair, determine which element is larger and which is smaller."
-	this->moveLargerInPairTop();
-
-// "Divide the list into two halves"
-// "Recursively sort the larger elements from each pair. This forms the initial 'main chain' or sequence."
-	this->splitAndInsertionSort();
-
-// "This step involves inserting the smaller elements (from the initial pairs) into the sequence formed by the
-// larger elements. The insertion is done to maintain the sorted order. The method of insertion is where the
-// algorithm gets more complex and involves using previously determined positions to minimize comparisons."
-	this->createMainAndLowerChain();
-	
-//	"Init Jacobsthal sequence that will help to insert remaining elements into the main chain"
-	this->initJacobsthalSequence(mainChain.size() + lowerChain.size());
-
-//	"The remaining elements (the smaller ones from the initial pairs) are inserted into the sorted sequence of larger
-//	elements. The insertion should maintain the sorted order, and the goal is to do this with the minimum number of
-//	comparisons."
+	std::cout << LIGHT_RED "\nBefore:" RESET << std::endl;
+	for (size_t i = 0; i < this->nums.size(); ++i)
+	{
+		std::cout << this->nums[i] << " ";
+	}
 }
 
 template <typename ContainerBasic, typename ContainerPair>
-void PmergeMe<ContainerBasic, ContainerPair>::moveLargerInPairTop()
+void PmergeMe<ContainerBasic, ContainerPair>::printSortedNums()
 {
-	std::cout << GRAY "\nSTEP 1 && STEP 2: group the elements of x into [n/2] pairs of elements determine the "
-	             "larger of the two elements in each pair" RESET << std::endl;
+	std::cout << LIGHT_GREEN "\n\nAfter:" RESET << std::endl;
+	for (size_t i = 0; i < this->mainChain.size(); ++i)
+	{
+		std::cout << this->mainChain[i] << " ";
+	}
+}
+
+template <typename ContainerBasic, typename ContainerPair>
+void PmergeMe<ContainerBasic, ContainerPair>::sortFordJohnson()
+{
+// For each pair, determine which element is larger and which is smaller.
+	this->moveLargerInPairFirst();
+
+// Divide the list into two halves. Recursively sort the larger elements from each pair
+	this->splitAndInsertionSort();
+
+// Sort bigger numbers from each pair and put them into the main chain, create lowerChain from lower numbers.
+// Indexes are relative to bigger number indexes
+	this->createMainAndLowerChain();
+	
+//	Init Jacobsthal sequence that will help to insert remaining elements into the main chain
+	this->initJacobsthalSequence(this->lowerChain.size() + 1);
+
+//	Insert lowerChain nums into mainChain using binarySearch connected with Jacobsthal sequence.
+//  Jacobsthal sequence helps to narrow down the area in which to use the binary search.
+	this->insertLowerChainNumsToMainChain();
+	
+//	Check if nums are sorted
+	this->sortedChecker();
+}
+
+template <typename ContainerBasic, typename ContainerPair>
+void PmergeMe<ContainerBasic, ContainerPair>::moveLargerInPairFirst()
+{
 	for (size_t i = 0; i < this->numsPairs.size(); ++i)
 	{
 		if (this->numsPairs[i].first < this->numsPairs[i].second)
 		{
 			std::swap(this->numsPairs[i].first, this->numsPairs[i].second);
 		}
-		std::cout << this->numsPairs[i].first << " " << this->numsPairs[i].second << std::endl;
 	}
 }
 
 template <typename ContainerBasic, typename ContainerPair>
 void PmergeMe<ContainerBasic,ContainerPair>::splitAndInsertionSort()
 {
-	std::cout << GRAY "\nSTEP 3: Divide list into 2 halves. Recursively sort the larger elements from each pair" RESET
-		<< std::endl;
 	size_t midIdxNumsPairs = this->numsPairs.size() / 2;
 	for (size_t i = 0; i < this->numsPairs.size(); ++i)
 	{
@@ -116,14 +133,6 @@ void PmergeMe<ContainerBasic,ContainerPair>::splitAndInsertionSort()
 	}
 	this->recursiveInsertionSort(this->firstHalf, this->firstHalf.size());
 	this->recursiveInsertionSort(this->secondHalf, this->secondHalf.size());
-	for (size_t i = 0; i < this->firstHalf.size(); ++i)
-	{
-		std::cout << "firstHalf: " << this->firstHalf[i].first << " " << this->firstHalf[i].second << std::endl;
-	}
-	for (size_t i = 0; i < this->secondHalf.size(); ++i)
-	{
-		std::cout << "secondHalf: " << this->secondHalf[i].first << " " << this->secondHalf[i].second << std::endl;
-	}
 }
 
 template <typename ContainerBasic, typename ContainerPair>
@@ -144,67 +153,73 @@ void PmergeMe<ContainerBasic, ContainerPair>::recursiveInsertionSort(ContainerPa
 template <typename ContainerBasic, typename ContainerPair>
 void PmergeMe<ContainerBasic, ContainerPair>::createMainAndLowerChain()
 {
-	std::cout << GRAY "\nSTEP 4: Create main and lower chain" RESET << std::endl;
 	size_t i = 0, j = 0;
 	while (i < this->firstHalf.size() && j < this->secondHalf.size())
 	{
 		if (this->firstHalf[i].first < this->secondHalf[j].first)
 		{
-			mainChain.push_back(this->firstHalf[i].first);
-			lowerChain.push_back(this->firstHalf[i].second);
+			this->mainChain.push_back(this->firstHalf[i].first);
+			this->lowerChain.push_back(this->firstHalf[i].second);
 			++i;
 		}
 		else
 		{
-			mainChain.push_back(this->secondHalf[j].first);
-			lowerChain.push_back(this->secondHalf[j].second);
+			this->mainChain.push_back(this->secondHalf[j].first);
+			this->lowerChain.push_back(this->secondHalf[j].second);
 			++j;
 		}
 	}
 	while (i < this->firstHalf.size())
 	{
-		mainChain.push_back(this->firstHalf[i].first);
-		lowerChain.push_back(this->firstHalf[i].second);
+		this->mainChain.push_back(this->firstHalf[i].first);
+		this->lowerChain.push_back(this->firstHalf[i].second);
 		++i;
 	}
 	while (j < this->secondHalf.size())
 	{
-		mainChain.push_back(this->secondHalf[j].first);
-		lowerChain.push_back(this->secondHalf[j].second);
+		this->mainChain.push_back(this->secondHalf[j].first);
+		this->lowerChain.push_back(this->secondHalf[j].second);
 		++j;
 	}
-	std::cout << "main chain: ";
-	for (size_t k = 0; k < mainChain.size(); ++k)
-	{
-		std::cout << mainChain[k] << " ";
-	}
-	std::cout << "\nlower chain: ";
-	for (size_t k = 0; k < lowerChain.size(); ++k)
-	{
-		std::cout << lowerChain[k] << " ";
-	}
-	std::cout << std::endl;
 }
 
 template <typename ContainerBasic, typename ContainerPair>
 void PmergeMe<ContainerBasic, ContainerPair>::initJacobsthalSequence(size_t n)
 {
-	std::cout << GRAY "\nSTEP 5: Init Jacobsthal sequence that will help to insert remaining elements into the main "
-					  "chain" RESET << std::endl;
-	jacobsthalSeq.push_back(0);
+	this->jacobsthalSeq.push_back(1);
 	if (n <= 1)
 	{
 		return;
 	}
-	jacobsthalSeq.push_back(1);
+	this->jacobsthalSeq.push_back(1);
 	for (size_t i = 2; i < n; ++i)
 	{
-		jacobsthalSeq.push_back(jacobsthalSeq[i - 2] * 2 + jacobsthalSeq[i - 1]);
+		this->jacobsthalSeq.push_back(this->jacobsthalSeq[i - 2] * 2 + this->jacobsthalSeq[i - 1]);
 	}
-	std::cout << "Jacobsthal sequence: ";
-	for (size_t i = 0; i < n; ++i)
+}
+
+template <typename ContainerBasic, typename ContainerPair>
+void PmergeMe<ContainerBasic, ContainerPair>::insertLowerChainNumsToMainChain()
+{
+	for (size_t i = 0; i < this->lowerChain.size(); ++i)
 	{
-		std::cout << jacobsthalSeq[i] << " ";
+		size_t maxSearchIndex = std::min(static_cast<size_t>(jacobsthalSeq[i] * 2), this->mainChain.size());
+		typename ContainerBasic::iterator insertPos = std::lower_bound(this->mainChain.begin(),
+																	   this->mainChain.begin() + maxSearchIndex,
+																	   this->lowerChain[i]);
+		this->mainChain.insert(insertPos, this->lowerChain[i]);
 	}
-	std::cout << std::endl;
+}
+
+template <typename ContainerBasic, typename ContainerPair>
+bool PmergeMe<ContainerBasic, ContainerPair>::sortedChecker()
+{
+	for (size_t i = 1; i < mainChain.size(); ++i)
+	{
+		if (this->mainChain[i] < this->mainChain[i - 1])
+		{
+			return false;
+		}
+	}
+	return true;
 }
