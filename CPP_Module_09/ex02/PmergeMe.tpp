@@ -201,13 +201,20 @@ void PmergeMe<ContainerBasic, ContainerPair>::initJacobsthalSequence(size_t n)
 template <typename ContainerBasic, typename ContainerPair>
 void PmergeMe<ContainerBasic, ContainerPair>::insertLowerChainNumsToMainChain()
 {
+	typename ContainerBasic::iterator insertPos;
 	for (size_t i = 0; i < this->lowerChain.size(); ++i)
 	{
 		size_t maxSearchIndex = std::min(static_cast<size_t>(jacobsthalSeq[i] * 2), this->mainChain.size());
-		typename ContainerBasic::iterator insertPos = std::lower_bound(this->mainChain.begin(),
-																	   this->mainChain.begin() + maxSearchIndex,
-																	   this->lowerChain[i]);
+		insertPos = std::lower_bound(this->mainChain.begin(),
+		                             this->mainChain.begin() + maxSearchIndex,
+		                             this->lowerChain[i]);
 		this->mainChain.insert(insertPos, this->lowerChain[i]);
+	}
+	if (this->nums.size() % 2 != 0)
+	{
+		int solitary = *(this->nums.end() - 1);
+		insertPos = std::lower_bound(this->mainChain.begin(), this->mainChain.end(), solitary);
+		this->mainChain.insert(insertPos, solitary);
 	}
 }
 
