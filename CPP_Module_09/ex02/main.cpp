@@ -30,10 +30,11 @@ int main(int argc, char **argv)
 			std::cerr << RED "!!! NOT SORTED !!!" RESET << std::endl;
 			return 3;
 		}
-		double elapsedTime = static_cast<double>(end - start) / 1000000.0 * CLOCKS_PER_SEC;
+		double elapsedTimeSec = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+		double elapsedTimeMicrosec = elapsedTimeSec * 1000000.0;
 		std::cout << "Time to process a range of " LIGHT_CYAN << argc - 1
-		          << " elements" RESET " with " BLUE "std::vector" RESET ": " << LIGHT_GREEN << elapsedTime
-				  << " microseconds." RESET << std::endl;
+		          << " elements" RESET " with " BLUE "std::vector" RESET ": " << LIGHT_GREEN << elapsedTimeMicrosec
+				  << " microseconds; " PURPLE << elapsedTimeSec << " seconds." RESET << std::endl;
 		
 		// Deque sorting.
 		PmergeMe<std::deque<int>, std::deque<std::pair<int, int> > > deqSort(argc, argv);
@@ -49,10 +50,12 @@ int main(int argc, char **argv)
 			std::cerr << RED "!!! NOT SORTED !!!" RESET << std::endl;
 			return 4;
 		}
-		elapsedTime = static_cast<double>(end - start) / 1000000.0 * CLOCKS_PER_SEC;
+		elapsedTimeSec = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+		elapsedTimeMicrosec = elapsedTimeSec * 1000000.0;
 		std::cout << "Time to process a range of " LIGHT_CYAN << argc - 1
 		          << " elements" RESET " with " YELLOW "std::deque" RESET ": "
-				  << LIGHT_GREEN << elapsedTime << " microseconds." RESET << std::endl;
+				  << LIGHT_GREEN << elapsedTimeMicrosec << " microseconds; " PURPLE << elapsedTimeSec
+				  << " seconds." RESET << std::endl;
 	}
 	catch (const std::invalid_argument& e)
 	{
