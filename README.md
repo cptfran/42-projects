@@ -2,12 +2,6 @@
 
 This repository contains my solutions for the projects in the 42 School core curriculum.
 
-### Current work
-
-Currently I am working on two-person project. Our goal is to develop minishell using C language.
-
-[Subject](https://github.com/rphlr/42-Subjects/blob/main/Cursus/minishell/en.subject.pdf)
-
 ## Projects
 
 ### Libft
